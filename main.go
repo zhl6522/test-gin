@@ -16,6 +16,30 @@ type User struct {
 func main() {
 	r := gin.Default()
 
+	r.GET("/moreJSON", func(c *gin.Context) {
+		var msg struct {
+			Name string
+			Gender string
+			Age int
+		}
+		msg.Name = "benben"
+		msg.Gender = "woman"
+		msg.Age = 18
+		c.JSON(http.StatusOK, msg)
+	})
+	r.POST("/user/search", func(c *gin.Context) {
+		//name := c.DefaultQuery("name", "zhl")
+		//name := c.Query("name")
+		name := c.PostForm("name")
+		address := c.PostForm("address")
+		c.JSON(http.StatusOK, gin.H{
+			"message":"ok",
+			"name":name,
+			"address":address,
+		})
+	})
+
+	r.Static("/static", "./static")
 	//===========================
 	http.HandleFunc("/hello", sayHello)
 	r.LoadHTMLGlob("./templates/**/*")
