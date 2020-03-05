@@ -1,0 +1,15 @@
+{{define "upload/index.html"}}
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <title>上传文件</title>
+</head>
+<body>
+<h3>上传文件</h3>
+<form action="/upload" method="post" enctype="multipart/form-data">
+    <input type="file" name="f1">
+    <input type="submit" value="上传">
+</form>
+</body>
+</html>
+{{end}}

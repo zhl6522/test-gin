@@ -1,10 +1,10 @@
 package main
 
 import (
-	"fmt"
 	"github.com/gin-gonic/gin"
-	"html/template"
+	"log"
 	"net/http"
+	"test-gin/controller"
 )
 
 type User struct {
@@ -14,7 +14,48 @@ type User struct {
 }
 
 func main() {
+	// 新建一个没有任何默认中间件的路由
+	//r := gin.New()
 	r := gin.Default()
+	r.LoadHTMLGlob("./templates/**/*")
+
+	//也可以这么写
+	/*
+	shopGroup := r.Group("/shop")
+	shopGroup.Use(controller.StatCost())
+	{}
+	*/
+	shopGroup := r.Group("/shop", controller.StatCost())
+	{
+		shopGroup.GET("/test", controller.Redirect2)
+	}
+
+	r.GET("/test3", controller.StatCost(), func(c *gin.Context) {	//给/test3路由单独注册中间件（可注册多个）
+		name := c.MustGet("name").(string)		//从上下文取值
+		log.Println(name)
+		c.JSON(http.StatusOK, gin.H{
+			"message": "Hello world!",
+		})
+	})
+	// 注册一个全局中间件
+	r.Use(controller.StatCost())
+	r.GET("/test1", func(c *gin.Context) {
+		//c.Redirect(http.StatusMovedPermanently, "http://www.baidu.com/")
+		c.Request.URL.Path = "/test2"
+		r.HandleContext(c)
+	})
+	r.GET("/test2", controller.Redirect2)
+	r.GET("file", controller.File)
+	// 处理multipart forms提交文件时默认的内存限制是32 MiB
+	// 可以通过下面的方式修改
+	// r.MaxMultipartMemory = 8 << 20  // 8 MiB
+	r.POST("/upload", controller.UploadFile)
+	r.GET("files", controller.Files)
+	// 处理multipart forms提交文件时默认的内存限制是32 MiB
+	// 可以通过下面的方式修改
+	//r.MaxMultipartMemory = 8 << 20  // 8 MiB
+	r.POST("/uploads", controller.UploadFiles)
+	r.POST("/loginJSON", controller.LoginUser)
 
 	r.GET("/moreJSON", func(c *gin.Context) {
 		var msg struct {
@@ -27,22 +68,12 @@ func main() {
 		msg.Age = 18
 		c.JSON(http.StatusOK, msg)
 	})
-	r.POST("/user/search", func(c *gin.Context) {
-		//name := c.DefaultQuery("name", "zhl")
-		//name := c.Query("name")
-		name := c.PostForm("name")
-		address := c.PostForm("address")
-		c.JSON(http.StatusOK, gin.H{
-			"message":"ok",
-			"name":name,
-			"address":address,
-		})
-	})
+	r.POST("/user/search", controller.Search)
 
 	r.Static("/static", "./static")
 	//===========================
-	http.HandleFunc("/hello", sayHello)
-	r.LoadHTMLGlob("./templates/**/*")
+	http.HandleFunc("/hello", controller.SayHello)
+	//r.LoadHTMLGlob("./templates/**/*")
 	//r.LoadHTMLFiles("templates/posts/index.html", "templates/users/index.html")
 	u1 := User{
 		Name:"zhl",
@@ -75,18 +106,4 @@ func main() {
 		})
 	})
 	r.Run()
-}
-
-func sayHello(w http.ResponseWriter, r *http.Request) {
-	t, err := template.ParseFiles("./index.tmpl")
-	if err != nil{
-		fmt.Println("err:%v", err)
-		return
-	}
-	name :="小王子"
-	err =t.Execute(w, name)
-	if err != nil {
-		fmt.Println("file err:%v", err)
-		return
-	}
 }
