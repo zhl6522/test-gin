@@ -1,10 +1,13 @@
 package main
 
 import (
+	"fmt"
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
 	"test-gin/controller"
+	//"golang.org/x/autotls"
+	//"golang.org/x/crypto/acme/autocert"
 )
 
 type User struct {
@@ -13,11 +16,76 @@ type User struct {
 	Age int
 }
 
+// simulate some private data
+var secrets = gin.H{
+	"foo":    gin.H{"email": "foo@bar.com", "phone": "123433"},
+	"austin": gin.H{"email": "austin@example.com", "phone": "666"},
+	"lena":   gin.H{"email": "lena@guapa.com", "phone": "523443"},
+}
+
 func main() {
 	// 新建一个没有任何默认中间件的路由
 	//r := gin.New()
 	r := gin.Default()
+
+
+
+	/*//支持Let's Encrypt证书
+	r.GET("/hello", controller.Hello)
+	//log.Fatal(autotls.Run(r, "ahfuzl.com", "zhl.com"))
+	m := autocert.Manager{
+		Prompt:     autocert.AcceptTOS,
+		HostPolicy: autocert.HostWhitelist("example1.com", "example2.com"),
+		Cache:      autocert.DirCache("E:/www/go_project/src/.cache"),
+	}
+	log.Fatal(autotls.RunWithManager(r, &m))*/
+
+	//中间件中使用Goroutines
+	r.GET("/long_async", controller.Async)
+	r.GET("/long_sync", controller.Sync)
+
+	//使用BasicAuth()（验证）中间件
+	// Group using gin.BasicAuth() middleware
+	// gin.Accounts is a shortcut for map[string]string
+	authorized := r.Group("/admin", gin.BasicAuth(gin.Accounts{
+		"foo":    "bar",
+		"austin": "1234",
+		"lena":   "hello2",
+		"manu":   "4321",
+	}))
+	// /admin/secrets endpoint
+	// hit "localhost:8080/admin/secrets
+	authorized.GET("/secrets", func(c *gin.Context) {
+		// get user, it was set by the BasicAuth middleware
+		user := c.MustGet(gin.AuthUserKey).(string)
+		if secret, ok := secrets[user]; ok {
+			c.JSON(http.StatusOK, gin.H{"user": user, "secret": secret})
+		} else {
+			c.JSON(http.StatusOK, gin.H{"user": user, "secret": "NO SECRET :("})
+		}
+	})
+
 	r.LoadHTMLGlob("./templates/**/*")
+
+	//返回第三方获取的数据 文件会下载
+	r.GET("/someDataFromReader", func(c *gin.Context) {
+		response, err := http.Get("https://raw.githubusercontent.com/gin-gonic/logo/master/color.png")
+		if err != nil || response.StatusCode != http.StatusOK {
+			c.Status(http.StatusServiceUnavailable)
+			fmt.Println("err:%s", err.Error)
+			return
+		}
+
+		reader := response.Body
+		contentLength := response.ContentLength
+		contentType := response.Header.Get("Content-Type")
+
+		extraHeaders := map[string]string{
+			"Content-Disposition": `attachment; path="E:\www\go_project\src\test-gin"; filename="gopher.png"`,
+		}
+
+		c.DataFromReader(http.StatusOK, contentLength, contentType, reader, extraHeaders)
+	})
 
 	//也可以这么写
 	/*
@@ -71,6 +139,7 @@ func main() {
 	r.POST("/user/search", controller.Search)
 
 	r.Static("/static", "./static")
+	//r.StaticFile("/index.css", "./static/index.css")
 	//===========================
 	http.HandleFunc("/hello", controller.SayHello)
 	//r.LoadHTMLGlob("./templates/**/*")

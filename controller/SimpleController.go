@@ -24,6 +24,25 @@ func StatCost() gin.HandlerFunc {
 	}
 }
 
+func Async(c *gin.Context) {
+	// 创建要在goroutine中使用的副本
+	cCp := c.Copy()
+	go func() {
+		// simulate a long task with time.Sleep(). 5 seconds
+		time.Sleep(5 * time.Second)
+
+		// 这里使用你创建的副本
+		log.Println("Done! in path " + cCp.Request.URL.Path)
+	}()
+}
+func Sync(c *gin.Context) {
+	// simulate a long task with time.Sleep(). 5 seconds
+	time.Sleep(5 * time.Second)
+
+	// 这里没有使用goroutine，所以不用使用副本
+	log.Println("Done! in path " + c.Request.URL.Path)
+}
+
 func Redirect2(c *gin.Context) {
 	c.JSON(http.StatusOK, gin.H{"hello": "world"})
 }
@@ -53,4 +72,8 @@ func SayHello(w http.ResponseWriter, r *http.Request) {
 		fmt.Println("file err:%v", err)
 		return
 	}
+}
+
+func Hello(c *gin.Context) {
+	c.String(http.StatusOK, "hello Gin")
 }
