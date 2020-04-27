@@ -26,10 +26,10 @@ func (d *Dog) Speak() {
 	fmt.Println("wang!")
 }
 
-/*func (d *Dog) SpeakTo(host string) {
+func (d *Dog) SpeakTo(host string) {
 	d.Speak()
 	fmt.Println(" ", host)
-}*/
+}
 
 func TestDog(t *testing.T) {
 	dog := new(Dog)
