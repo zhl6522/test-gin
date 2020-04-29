@@ -5,7 +5,7 @@ import "fmt"
 func init() {
 	fmt.Println("init1")
 }
-//同医源码文件，可以定义多个init函数
+//同一源码文件，可以定义多个init函数
 func init() {
 	fmt.Println("init2")
 }

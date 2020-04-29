@@ -27,7 +27,7 @@ func GetFibonacci(n int) ([]int, error) {
 }
 
 func TestGetFibonacci(t *testing.T) {
-	if v,err := GetFibonacci(1); err != nil {
+	if v,err := GetFibonacci(15); err != nil {
 		if err == LessThanTwoError {
 			fmt.Println("It is less.")
 		}
