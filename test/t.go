@@ -56,6 +56,36 @@ func main() {
 		for b:=a;b<10;b++ {
 			fmt.Printf("%d*%d=%d ", a, b, a*b)
 		}
-		fmt.Println("\n")
+		fmt.Println(" ")
 	}
+	fmt.Println("-------------------------")
+	switch d := 7; d {
+	case 1, 3, 5, 7, 9:
+		fmt.Println("奇数")
+		fallthrough		//fallthrough语法可以执行满足条件的case的下一个case，是为了兼容C语言中的case设计的。了解
+	case 2, 4, 6, 8, 10:
+		fmt.Println("偶数")
+	default:
+		fmt.Println("未知")
+	}
+
+	var boo = false
+	for i := 0; i < 10; i++ {
+		for j := 0; j < 10; j++ {
+			if j == 2 {
+				boo = true
+				break
+				// 设置退出标签
+				//goto breakTag
+			}
+			fmt.Printf("%v-%v\n", i, j)
+		}
+		if boo {
+			break
+		}
+	}
+	// 标签
+/*breakTag:
+	fmt.Println("结束for循环")*/
+
 }
