@@ -5,6 +5,7 @@ import (
 	"math/rand"
 	"regexp"
 	"sort"
+	"strings"
 	"time"
 )
 
@@ -76,6 +77,16 @@ func main() {
 		}
 	}
 
+	s111 := []int{1,2,3,4}
+	s112 := s111
+	var s113 = make([]int, 1, 3)	//如果长度为0，拷贝元素不会改变长度，所以结果为:[]
+	copy(s113, s111)
+	fmt.Println(s112)
+	s112[1] = 200
+	fmt.Println(s112)
+	fmt.Println(s111)
+	fmt.Println(s113,len(s113), cap(s113))
+
 	// 从切片中删除元素
 	a23 := []int{1,3,5,7}	//数组
 	s23 := a23[:]			//切片
@@ -102,6 +113,8 @@ func main() {
 	fmt.Println(a25)
 	fmt.Println("-------------------")
 
+	// 指针
+	// Go里面的指针只能读不能修改
 	// 1、&:取地址
 	n := 18
 	p := &n
@@ -163,8 +176,8 @@ func main() {
 	fmt.Println("")
 	//map和slice组合
 	//元素类型为map的切片
-	var s1 = make([]map[int]string, 5, 10)	//长度为0，调用就会报跨界错误
-	s1[0] = make(map[int]string, 1)			//对内部的map做初始化
+	var s1 = make([]map[int]string, 5, 10)	//如果长度为0，调用就会报跨界错误
+	s1[0] = make(map[int]string, 1)			//对内部的map做初始化(如果s1 = append(s1, 1)	//自动初始化)
 	s1[0][10] = "zhl"
 	fmt.Println(s1)
 	//值为切片类型的map
@@ -172,8 +185,8 @@ func main() {
 	m11["北京"] = []int{10,20,30}			//初始化
 	fmt.Println(m11)
 
-	s12:="how do you    do"
-	// split:=strings.Split(s," ")
+	s12:="how do you do"
+	// split:=strings.Split(s12," ")
 	// update 采用正则匹配来分割字符串
 	spaceRe, _ := regexp.Compile(`\s+`)
 
@@ -186,7 +199,20 @@ func main() {
 		}else{
 			m12[i]=1
 		}
-
 	}
 	fmt.Println(m12)
+
+	sq12 := strings.Split(s12, " ")
+	var m13 = make(map[string]int, 10)
+	for _,v := range sq12 {
+		//m13[v]++
+		if _,ok := m13[v];ok {
+			m13[v]++
+		} else {
+			m13[v] = 1
+		}
+	}
+	for keys,value := range m13 {
+		fmt.Println(keys, value)
+	}
 }

@@ -3,6 +3,7 @@ package main
 import (
 	"fmt"
 	"math"
+	"unicode"
 )
 
 const (
@@ -21,6 +22,7 @@ func main() {
 	// math.Sqrt()接收的参数是float64类型，需要强制转换
 	c = int(math.Sqrt(float64(a*a + b*b)))
 	fmt.Printf("type:%T,value is:%v\n",c,c)
+
 	var s = "hello沙河小王子"
 	temp := []rune(s)
 	var count int
@@ -31,6 +33,13 @@ func main() {
 		}
 	}
 	fmt.Println(count)
+	var ct int
+	for _,c := range s {
+		if unicode.Is(unicode.Han, c) {
+			ct++
+		}
+	}
+	fmt.Println(ct)
 	fmt.Println("-----------------------")
 	/*var age = 19
 	if age > 18 {
@@ -88,4 +97,17 @@ func main() {
 /*breakTag:
 	fmt.Println("结束for循环")*/
 
+	// 回文判断：上海自来水来自海上、黄山落叶松叶落山黄
+	ss := "a上海自来水来自海上a"	//一个汉子三个字符
+	r := make([]rune, 0, len(ss))	//切片
+	for _,v := range ss {
+		r = append(r, v)
+	}
+	//fmt.Println(r)
+	for i:=0;i<len(r);i++ {
+		if r[i] != r[len(r)-1-i] {
+			fmt.Println("不是回文")
+		}
+	}
+	fmt.Println("回文")
 }

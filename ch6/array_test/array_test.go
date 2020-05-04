@@ -1,4 +1,4 @@
-package arrat_test_test
+package array_test_test
 
 import "testing"
 
