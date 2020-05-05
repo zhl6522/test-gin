@@ -127,7 +127,7 @@ func main() {
 	new与make的区别
 	二者都是用来做内存分配的。
 	make只用于slice、map以及channel的初始化，返回的还是这三个引用类型本身；
-	而new用于类型的内存分配，并且内存对应的值为类型零值，返回的是指向类型的指针。
+	而new用于类型的内存分配，并且内存对应的值为类型零值，返回的是指向类型的指针。int、string、bool
 	*/
 	var m1 map[string]int
 	fmt.Println(m1==nil)	//还没有初始化（没有在内存中开辟空间）

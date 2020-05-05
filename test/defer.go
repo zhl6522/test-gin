@@ -87,9 +87,8 @@ func funcB() {
 		//如果程序出出现了panic错误,可以通过recover恢复过来
 		if err != nil {
 			fmt.Println("recover in B")
-		} else {
-			fmt.Println("释放数据库链接。。。")
 		}
+		fmt.Println("释放数据库链接。。。")
 	}()
 	panic("panic in B")
 }

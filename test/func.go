@@ -5,6 +5,14 @@ import (
 	"strings"
 )
 
+var (
+	coins = 50
+	users = []string{
+		"Matthew", "Sarah", "Augustus", "Heidi", "Emilie", "Peter", "Giana", "Adriano", "Aaron", "Elizabeth",
+	}
+	distribution = make(map[string]int, len(users))
+)
+
 func sum(x int,y int)(ret int) {	//命名返回值
 	//return x + y
 	ret = x + y
@@ -99,9 +107,126 @@ func main() {
 	fmt.Println(f1(1), f2(2)) //11 9
 	fmt.Println(f1(3), f2(4)) //12 8
 	fmt.Println(f1(5), f2(6)) //13 7
+
+	/*
+	你有50枚金币，需要分配给以下几个人：Matthew,Sarah,Augustus,Heidi,Emilie,Peter,Giana,Adriano,Aaron,Elizabeth。
+	分配规则如下：
+	a. 名字中每包含1个'e'或'E'分1枚金币
+	b. 名字中每包含1个'i'或'I'分2枚金币
+	c. 名字中每包含1个'o'或'O'分3枚金币
+	d: 名字中每包含1个'u'或'U'分4枚金币
+	写一个程序，计算每个用户分到多少金币，以及最后剩余多少金币？
+	程序结构如下，请实现 ‘dispatchCoin’ 函数
+	*/
+	left := dispatchCoin()
+	fmt.Println("剩下：", left)
+	for key1, value1 := range distribution {
+		fmt.Printf("%s:%d\n",key1,value1)
+	}
+
+	c2(c1, "zhl")
+	ff := c3()
+	fmt.Printf("%T\n", ff)
+	fmt.Println(ff(100,200))
+	//闭包示例
+	fe:= bi(c1, "uu")
+	fmt.Printf("%T\n", fe)
+	low(fe)
+	// n的阶乘
+	fmt.Println(f20(5))
+	fmt.Println(taijie(6))
+}
+// 上台阶的面试题=费布拉切数列(反向)
+// 已知楼梯有20阶台阶，上楼可以一步上 1 阶，也可以一步上 2 阶，请编写一个函数计算一种有多少上楼梯的方式。
+// 1:1
+// 2:1、1，2
+// 3:1、1、1,1、2,2、1
+// 4:1111，112,121,211,22
+func taijie(n uint64) uint64 {
+	if n == 1 {
+		return 1
+	}
+	if n == 2 {
+		return 2
+	}
+	return taijie(n-1) + taijie(n-2)
+}
+// 递归
+// 递归适合处理那种问题相同/问题规模越来越小的场景
+// 递归一定要有一个明确的退出条件
+func f20(n uint64) uint64 {
+	if n <= 1 {
+		return 1
+	}
+	return n*f20(n-1)
+}
+func dispatchCoin() (left int) {
+	/*for _,name := range users {
+		var n21 = strings.Split(name, "")
+		for _,v21 := range n21 {
+			switch v21 {
+			case "e","E":
+				distribution[name]+=1
+				coins -= 1
+			case "i","I":
+				distribution[name]+=2
+				coins -= 2
+			case "o", "O":
+				distribution[name]+=3
+				coins -= 3
+			case "u", "U":
+				distribution[name]+=4
+				coins -= 4
+			}
+		}
+	}
+	return coins*/
+	for _,name12 := range users {
+		for _,v12 := range name12 {
+			switch v12 {
+			case 'e', 'E':
+				distribution[name12]++
+				coins--
+			case 'i', 'I':
+				distribution[name12]+=2
+				coins-=2
+			case 'o', 'O':
+				distribution[name12]+=3
+				coins-=3
+			case 'u', 'U':
+				distribution[name12]+=4
+				coins-=4
+			}
+		}
+	}
+	left = coins
+	return
+}
+//闭包
+func bi(f func(string), name string) func() {
+	return func() {
+		f(name)
+	}
+}
+func low(f func()) {
+	f()
+}
+func c1(name string) {
+	fmt.Println("hello ", name)
+}
+// 函数作为参数
+func c2(f func(string), name string) {
+	f(name)
+}
+// 函数作为返回值
+func c3() (func(int, int) int) {
+	return func(i int, i2 int) int {
+		return i+i2
+	}
 }
 func adder() func(int) int {
 	var x int
+	//闭包：函数和其外部变量的引用。
 	return func(y int) int {
 		x += y
 		return x
