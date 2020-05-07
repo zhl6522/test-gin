@@ -19,6 +19,40 @@ type xyz struct {
 	a,b,c int8
 }
 
+type student struct {
+	name string
+	age  int
+}
+
+// 标识符：变量名 函数名 类型名 方法名
+// Go语言中如果标识符首字母是大写的，就表示对外部包可见（暴露的，共有的）
+
+// dog 这是一条狗的结构体
+type dog struct {
+	name string
+}
+
+// 结构体是值类型，赋值的时候都是拷贝。
+// 构造函数：约定成俗用new开头
+// 返回的是结构体还是结构体指针
+// 当结构体比较大的时候尽量使用结构体指针，减少程序的内存开销
+func newPerson(name string, age int) *person {
+	return &person{
+		name:name,
+		age:age,
+	}
+}
+
+// 方法是作用于特定类型的函数
+// 接收者(d)表示的是调用该方法的具体类型变量，多用类型名首字母小写表示
+func (d dog)wang() {
+	fmt.Printf("%s:汪汪汪~\n", d.name)
+}
+func newDog(name string) dog {
+	return dog{
+		name:name,
+	}
+}
 func main() {
 	var n myInt
 	n = 100
@@ -96,6 +130,28 @@ func main() {
 		c:int8(30),
 	}
 	fmt.Printf("a:%p b:%p c:%p\n", &(mn.a), &(mn.b), &(mn.c))
+
+	p1 := newPerson("zhl", 25)
+	d1 := newDog("旺财")
+	fmt.Println(p1, d1)
+	d1.wang()
+
+
+	m0 := make(map[string]*student)
+	stus := []student{
+		{name: "小王子", age: 18},
+		{name: "娜扎", age: 23},
+		{name: "大王八", age: 9000},
+	}
+
+	for _, stu := range stus {
+		fmt.Printf("%p\n", &stu)		// ??????
+		m0[stu.name] = &stu
+	}
+	fmt.Printf("%v\n", m0)
+	for k, v := range m0 {
+		fmt.Println(k, "=>", v.name)
+	}
 }
 // go语言中函数参数永远是拷贝
 func f(x person) {
