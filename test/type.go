@@ -46,12 +46,38 @@ func newPerson(name string, age int) *person {
 // 方法是作用于特定类型的函数
 // 接收者(d)表示的是调用该方法的具体类型变量，多用类型名首字母小写表示
 func (d dog)wang() {
+	fmt.Printf("%p\n", &d)
 	fmt.Printf("%s:汪汪汪~\n", d.name)
+}
+// 使用值接收者：传拷贝进去
+func (p person) guonian() {
+	p.age++
+}
+// 指针接收者：传内存地址进去
+/*
+什么时候应该使用指针类型接收者
+1、需要修改接收者中的值
+2、接收者是拷贝代价比较大的大对象
+3、保证一致性，如果有某个方法使用了指针接收者，那么其他的方法也应该使用指针接收者。
+*/
+func (p *person) zhenguonian() {
+	p.age++
+}
+func (p *person) dream() {
+	fmt.Printf("%v的梦想：学会go语言！\n", p.name)
 }
 func newDog(name string) dog {
 	return dog{
 		name:name,
 	}
+}
+
+// 给自定义类型加方法
+// 不能给别的包里面的类型添加方法，只能给自己包里的类型添加方法
+type myInt10 int
+
+func (m myInt10) helllo() {
+	fmt.Println("我是一个int")
 }
 func main() {
 	var n myInt
@@ -77,6 +103,8 @@ func main() {
 	p2.gender = "女"
 	fmt.Printf("type:%T value:%v\n", p2, p2)
 
+
+	fmt.Println("---------------匿名结构体---------------")
 	// 匿名结构体：多用于临时场景
 	var s struct{
 		x	string
@@ -93,7 +121,9 @@ func main() {
 	fmt.Printf("真正数据 指针：%p value:%v\n", &p3, p3)
 	f2(&p3)
 	fmt.Printf("真正数据 指针：%p value:%v\n", &p3, p3)
-	// 结构体指针1
+
+	fmt.Println("---------------结构体指针---------------")
+	// 1
 	var p4 = new(person)
 	p4.name = "yoyo"
 	fmt.Printf("type:%T p2的值：%p p2的内存地址：%p\n", p4, p4, &p4)	//值类型的指针 *main.person
@@ -135,6 +165,15 @@ func main() {
 	d1 := newDog("旺财")
 	fmt.Println(p1, d1)
 	d1.wang()
+	//p1.wang()		// 定义了wang只能Dao接收者才能调用
+	p1.guonian()
+	fmt.Printf("值传递%v的年龄：%v\n", p1.name,p1.age)
+	p1.zhenguonian()
+	fmt.Printf("一年后%v的年龄：%v\n", p1.name,p1.age)
+	p1.dream()
+
+	m10 := myInt10(10)	//	var m10 int32 = 10/ var m10 := int32(10)
+	m10.helllo()
 
 
 	m0 := make(map[string]*student)
@@ -143,9 +182,9 @@ func main() {
 		{name: "娜扎", age: 23},
 		{name: "大王八", age: 9000},
 	}
-
 	for _, stu := range stus {
-		fmt.Printf("%p\n", &stu)		// ??????
+		fmt.Printf("%#v\n", &stu.name)		// ??????
+		fmt.Printf("%p\n", &stu.name)		// ??????
 		m0[stu.name] = &stu
 	}
 	fmt.Printf("%v\n", m0)

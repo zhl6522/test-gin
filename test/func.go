@@ -69,7 +69,7 @@ func main() {
 	fmt.Printf("%T\n", af2)
 	f7 := f51(f2)
 	fmt.Printf("%T\n", f7)
-	fmt.Println("--------------匿名函数----------")
+	fmt.Println("---------------匿名函数---------------")
 	// 匿名函数多用于函数内部
 	fun1 := func(x, y int) {
 		fmt.Println(x + y)
@@ -82,7 +82,7 @@ func main() {
 		fmt.Println("Hello World!")
 	}(100, 200)
 
-	fmt.Println("--------------闭包----------")
+	fmt.Println("---------------闭包---------------")
 	// 底层原理：
 	// 1、函数可以作为返回值
 	// 2、函数内部查找变量的顺序，先在自己内部找，找不到外层找
