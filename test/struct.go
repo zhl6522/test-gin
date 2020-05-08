@@ -47,8 +47,8 @@ func (d dog) wang() {
 // 1、序列化   json_encode 把Go语言中的结构体变量		-->	json格式的字符串
 // 2、反序列化 json_decode json格式的字符串			--> Go语言中能够识别的结构体变量
 type person struct {
-	Name	string
-	Age		int
+	Name	string `json:"name" db:"name" ini:"name"`	// 加上`json:"name"`后 {\"Name\":\"李明\",\"Age\":28} 变成小写 {\"name\":\"李明\",\"age\":28}
+	Age		int `json:"age"`
 	gender	string		//首字母小写只能包内调用，包外输出为空
 }
 
@@ -76,15 +76,21 @@ func main() {
 	d1.move()
 
 	fmt.Println("---------------结构体与json---------------")
+	// 序列化
 	p1 := person{
 		Name: "李明",
 		Age:  28,
 		gender:"男",
 	}
-	b, err := json.Marshal(p1)
+	b, err := json.Marshal(p1)		//在json的Marshal包中，把p1的内容拿出来转换成字符串，所以gender不会被打印出来
 	if err != nil {
 		fmt.Printf("marshal failed, err:%v\n", err)
 		return
 	}
-	fmt.Printf("%#v\n", string(b))
+	fmt.Printf("%v\n", string(b))
+	// 反序列化
+	str := `{"name":"小明","age":28}`
+	var p2 person
+	json.Unmarshal([]byte(str), &p2)	// 传值针是为了能在json.Unmarshal内部修改p2的值
+	fmt.Printf("%#v\n", p2)
 }
