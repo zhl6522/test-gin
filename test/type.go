@@ -5,8 +5,8 @@ import "fmt"
 // type后面跟的是类型
 type myInt int		// 自定义类型
 					// 自定义类型编写完成后依旧有效
-type yourInt=int	// 类型别名:还有byte、rune
-					// 类型别名只在你代码编写过程中有效，完成后就没有了
+type yourInt=int	// 类型别名，比如:内置的byte、rune
+					// 类型别名只在你代码编写过程中有效，完成后就不存在了
 
 type person struct {
 	name,gender	string
