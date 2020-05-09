@@ -1,8 +1,8 @@
 package main
 
 import (
+	"encoding/json"
 	"fmt"
-	"github.com/gin-gonic/gin/json"
 )
 
 // 结构体嵌套
@@ -47,12 +47,18 @@ func (d dog) wang() {
 // 1、序列化   json_encode 把Go语言中的结构体变量		-->	json格式的字符串
 // 2、反序列化 json_decode json格式的字符串			--> Go语言中能够识别的结构体变量
 type person struct {
-	Name	string `json:"name" db:"name" ini:"name"`	// 加上`json:"name"`后 {\"Name\":\"李明\",\"Age\":28} 变成小写 {\"name\":\"李明\",\"age\":28}
+	Name	string `json:"name" db:"name" ini:"name"`	// 加上（tag）`json:"name"`后 {"Name":"李明","Age":28} 变成小写 {"name":"李明","age":28}
 	Age		int `json:"age"`
 	gender	string		//首字母小写只能包内调用，包外输出为空
 }
 
 func main() {
+	fmt.Println("---------------匿名结构体---------------")
+	var a = struct{
+		x int
+		y int
+	}{10,20}
+	fmt.Println(a)
 	fmt.Println("---------------结构体模拟实现'继承'---------------")
 	c1 := copany{
 		name: "zhl.icn",
@@ -87,10 +93,14 @@ func main() {
 		fmt.Printf("marshal failed, err:%v\n", err)
 		return
 	}
-	fmt.Printf("%v\n", string(b))
+	fmt.Printf("%v\n", string(b))		// b为切片，所以要string转一下
 	// 反序列化
 	str := `{"name":"小明","age":28}`
 	var p2 person
-	json.Unmarshal([]byte(str), &p2)	// 传值针是为了能在json.Unmarshal内部修改p2的值
+	err = json.Unmarshal([]byte(str), &p2)	// 传指针是为了能在json.Unmarshal内部修改p2的值
+	if err != nil {
+		fmt.Printf("unmarshal failed, err:%v\n", err)
+		return
+	}
 	fmt.Printf("%#v\n", p2)
 }

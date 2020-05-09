@@ -51,7 +51,7 @@ func (d dog)wang() {
 }
 // 使用值接收者：传拷贝进去
 func (p person) guonian() {
-	p.age++
+	p.age++		// 此处p是p1的副本，改的是副本
 }
 // 指针接收者：传内存地址进去
 /*
@@ -63,8 +63,8 @@ func (p person) guonian() {
 func (p *person) zhenguonian() {
 	p.age++
 }
-func (p *person) dream() {
-	fmt.Printf("%v的梦想：学会go语言！\n", p.name)
+func (p *person) dream(str string) {
+	fmt.Printf("%v的梦想：%s\n", p.name, str)
 }
 func newDog(name string) dog {
 	return dog{
@@ -161,6 +161,8 @@ func main() {
 	}
 	fmt.Printf("a:%p b:%p c:%p\n", &(mn.a), &(mn.b), &(mn.c))
 
+
+	fmt.Println("---------------方法---------------")
 	p1 := newPerson("zhl", 25)
 	d1 := newDog("旺财")
 	fmt.Println(p1, d1)
@@ -170,7 +172,7 @@ func main() {
 	fmt.Printf("值传递%v的年龄：%v\n", p1.name,p1.age)
 	p1.zhenguonian()
 	fmt.Printf("一年后%v的年龄：%v\n", p1.name,p1.age)
-	p1.dream()
+	p1.dream("学好Go语言")
 
 	m10 := myInt10(10)	//	var m10 int32 = 10/ var m10 := int32(10)
 	m10.helllo()
