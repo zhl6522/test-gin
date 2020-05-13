@@ -8,10 +8,11 @@ import (
 // 学生管理系统
 
 var smr studentMgr		// 声明一个全局的变量学生管理对象smr
-
+func init() {
+	fmt.Println("----------------welcome sms!-----------------")
+}
 // 菜单函数
 func showMenu() {
-	fmt.Println("----------------welcome sms!-----------------")
 	fmt.Println(`
 		1、查看所有学生
 		2、新增学生

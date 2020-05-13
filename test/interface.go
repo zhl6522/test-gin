@@ -57,14 +57,21 @@ type cat2 struct {
 	name	string
 	feet	int8
 }
-
-func (c cat2)move() {
+// 使用值接收者实现了接口的所有方法
+/*func (c cat2)move() {
 	fmt.Println("走猫步")
 }
-/*func (c cat2) eat() {		// 与animal的eat(string)实现的不是同一个方法，不满足接口的需求
-	fmt.Println("吃猫粮~")
-}*/
+//func (c cat2) eat() {		// 与animal的eat(string)实现的不是同一个方法，不满足接口的需求
+//	fmt.Println("吃猫粮~")
+//}
 func (c cat2) eat(food string) {
+	fmt.Printf("吃猫%s~\n", food)
+}*/
+// 使用指针接收者实现了接口的所有方法
+func (c *cat2)move() {
+	fmt.Println("走猫步")
+}
+func (c *cat2) eat(food string) {
 	fmt.Printf("吃猫%s~\n", food)
 }
 type chicken struct {
@@ -75,6 +82,64 @@ func (c chicken) move() {
 }
 func (c chicken) eat(w string) {
 	fmt.Println("%s吃鸡饲料~", w)
+}
+
+// 同一个结构体可以实现多个接口
+// 接口还可以嵌套
+type animal3 interface {
+	mover
+	eater
+}
+type mover interface {
+	move()
+}
+type eater interface {
+	eat()
+}
+type cat3 struct {
+	name	string
+	feet	int8
+}
+// cat3实现了mover接口
+func (c *cat3)move() {
+	fmt.Println("走猫步")
+}
+// cat3实现了eater接口
+func (c *cat3) eat(food string) {
+	fmt.Printf("吃猫%s~\n", food)
+}
+
+// 空接口：没有必要起名字，通常定义成下面的格式：
+//interface{}
+// 所有的类型都是先了空接口，也就是任意类型的变量都能保存空接口中。
+
+// 空接口作为你函数参数
+func show(a interface{}) {
+	fmt.Printf("type:%T value:%v\n", a, a)
+}
+// 类型断言	我想知道空接口接收值具体是什么
+func assign(a interface{}) {
+	fmt.Printf("%T\n", a)
+	str, ok := a.(string)
+	if !ok {
+		fmt.Print("猜错了\n")
+	} else {
+		fmt.Printf("传进来的是一个字符串：%v\n", str)
+	}
+}
+// 类型断言2
+func assign2(a interface{}) {
+	fmt.Printf("%T\n", a)
+	switch t := a.(type) {
+	case string:
+		fmt.Printf("传进来的是一个字符串：%v\n", t)
+	case int:
+		fmt.Printf("传进来的是一个int：%v\n", t)
+	case int64:
+		fmt.Printf("传进来的是一个int64：%v\n", t)
+	case bool:
+		fmt.Printf("传进来的是一个bool：%v\n", t)
+	}
 }
 
 func main() {
@@ -100,7 +165,8 @@ func main() {
 		"淘气",
 		4,
 	}
-	a1 = bc
+	a1 = &bc
+	//a1 = bc
 	a1.eat("猫粮")
 	fmt.Printf("%T\n", a1)	// 返回main.cat2 看interface.png详解
 	fmt.Println(a1)
@@ -117,4 +183,38 @@ func main() {
 	ss = d1
 	ss = p1
 	fmt.Println(ss)
+
+	fmt.Println("---------------值接收者与指针接收者---------------")
+	// 使值接收者与指针接收者的区别？
+	// 1、使用值接收者实现接口，结构体类型和结构体指针类型的变量都能存。
+	// 2、指针接收者实现接口只能存结构体指针类型的变量。
+
+	c4 := cat2{"tom", 4}
+	c5 := &cat2{"假老练", 4}
+	a1 = &c4			// 实现anim这个接口的是cat指针，所以要使用 &c4
+	fmt.Println(a1)
+	a1 = c5
+	fmt.Println(a1)
+
+
+	fmt.Println("---------------空接口---------------")
+	// interface：关键字
+	// interface{}：空接口类型
+	var i  map[string]interface{}
+	i = make(map[string]interface{}, 16)
+	i["name"] = "zhl"
+	i["age"] = 25
+	i["merried"] = false
+	i["hobby"] = [...]string{"轮滑","滑雪", "rap"}
+	fmt.Println(i)
+
+	show(false)
+	show(nil)
+	show(i)
+
+	assign(100)
+	assign2(true)
+	assign2("哈哈哈")
+	assign2(int64(200))
+
 }

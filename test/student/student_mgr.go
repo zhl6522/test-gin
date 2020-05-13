@@ -1,6 +1,10 @@
 package main
 
-import "fmt"
+import (
+	"bufio"
+	"fmt"
+	"os"
+)
 
 // 学生管理系统
 // 有一个物件
@@ -33,8 +37,11 @@ func (s studentMgr) addStudent() {
 	// 获取用户输入
 	fmt.Print("请输入学生的学号:")
 	fmt.Scanln(&stuId)
+
+	//fmt.Scanln(&stuName)	// 如果姓名里有空格，就没法录入全部
+	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("请输入学生的姓名:")
-	fmt.Scanln(&stuName)
+	stuName,_ = reader.ReadString('\n')
 	// 根据用户输入创建结构体对象
 	newStu := student{
 		id:stuId,
@@ -59,9 +66,11 @@ func (s studentMgr) editStudent() {
 	}
 	fmt.Printf("你要修改的学生信息如下：学号：%d 姓名：%s\n", stuObj.id, stuObj.name)
 	// 3、请输入修改后的学生名
-	fmt.Print("请输入学生的新姓名:")
 	var newName		string
-	fmt.Scanln(&newName)
+	//fmt.Scanln(&newName)	// 如果姓名里有空格，就没法录入全部
+	reader := bufio.NewReader(os.Stdin)
+	fmt.Print("请输入学生的新姓名:")
+	newName,_ = reader.ReadString('\n')
 	// 4、更新学生的姓名
 	stuObj.name = newName	// 这时只是修改了stuObj对象的name值
 	s.allStudent[stuId] = stuObj	// 更新map中的学生

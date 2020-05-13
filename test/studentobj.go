@@ -98,12 +98,14 @@ func delStudent() {
 	// 去allStudent这个map中根据学号删除对应的键值对
 	delete(allStudent, delId)
 }
+func init() {
+	fmt.Println("欢迎光临学生管理系统！")
+}
 
 func main() {
 	allStudent = make(map[int]*student, 50)		// 初始化（开辟内存空间）
 	for {
 		// 1、打印菜单
-		fmt.Println("欢迎光临学生管理系统！")
 		fmt.Println(`
 			1、查看所有学生
 			2、新增学生
