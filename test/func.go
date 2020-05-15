@@ -53,7 +53,7 @@ func main() {
 	fmt.Println("1")
 	//panic("----")
 
-	// 语句块作用域
+	fmt.Println("---------------语句块作用域---------------")
 	if i:=10;i<18 {
 		fmt.Println("好好上学")
 	}

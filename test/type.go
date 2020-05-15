@@ -103,7 +103,6 @@ func main() {
 	p2.gender = "女"
 	fmt.Printf("type:%T value:%v\n", p2, p2)
 
-
 	fmt.Println("---------------匿名结构体---------------")
 	// 匿名结构体：多用于临时场景
 	var s struct{
