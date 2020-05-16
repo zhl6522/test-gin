@@ -122,10 +122,10 @@ func main() {
 	fmt.Printf("真正数据 指针：%p value:%v\n", &p3, p3)
 
 	fmt.Println("---------------结构体指针---------------")
-	// 1
+	// 结构体指针1
 	var p4 = new(person)
 	p4.name = "yoyo"
-	fmt.Printf("type:%T p2的值：%p p2的内存地址：%p\n", p4, p4, &p4)	//值类型的指针 *main.person
+	fmt.Printf("type:%T p4的值：%v p4的内存地址：%p\n", p4, p4, &p4)	//值类型的指针 *main.person
 	// 结构体指针2
 	/*
 	取结构体的地址实例化
@@ -160,13 +160,12 @@ func main() {
 	}
 	fmt.Printf("a:%p b:%p c:%p\n", &(mn.a), &(mn.b), &(mn.c))
 
-
 	fmt.Println("---------------方法---------------")
 	p1 := newPerson("zhl", 25)
-	d1 := newDog("旺财")
+	d1 := newDog("旺财")	//构造函数
 	fmt.Println(p1, d1)
 	d1.wang()
-	//p1.wang()		// 定义了wang只能Dao接收者才能调用
+	//p1.wang()		// 定义了wang只能Dog接收者才能调用
 	p1.guonian()
 	fmt.Printf("值传递%v的年龄：%v\n", p1.name,p1.age)
 	p1.zhenguonian()
@@ -176,7 +175,6 @@ func main() {
 	m10 := myInt10(10)	//	var m10 int32 = 10/ var m10 := int32(10)
 	m10.helllo()
 
-
 	m0 := make(map[string]*student)
 	stus := []student{
 		{name: "小王子", age: 18},
@@ -184,9 +182,8 @@ func main() {
 		{name: "大王八", age: 9000},
 	}
 	for _, stu := range stus {
-		fmt.Printf("%#v\n", &stu.name)		// ??????
-		fmt.Printf("%p\n", &stu.name)		// ??????
-		m0[stu.name] = &stu
+		fmt.Printf("%p\n", &stu.name)		// 指向同一个为map的结构体？？？
+		m0[stu.name] = &stu			// 传的是指针的内存地址
 	}
 	fmt.Printf("%v\n", m0)
 	for k, v := range m0 {

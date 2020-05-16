@@ -32,12 +32,12 @@ func main() {
 			numDown := a4[u]
 			sum := numUp + numDown
 			if sum == 8 {
-				fmt.Println(i, u)
+				fmt.Printf("key:%v,value:%v key:%v,value:%v\n",i, numUp, u, numDown)
 			}
 		}
 	}
 
-	fmt.Println("----------------------")
+	fmt.Println("---------------切片---------------")
 	cap1 := []int{1,3,5,7,9,11,13}
 	cap2 := cap1[:5]
 	cap3 := cap1[3:]
@@ -45,7 +45,7 @@ func main() {
 	fmt.Printf("value:%v len(cap3):%d cap(cap3):%d\n", cap3, len(cap3), cap(cap3))
 	cap1[4] = 90	//修改底层数组
 	fmt.Println(cap2, cap3)
-	//切片的本质：
+	// 切片的本质：
 	// 切片就是一个框，框住了一块连续的内存。
 	// 切片属于引用类型，真正的数据都是保存在底层数组里的。
 	cap4 := make([]int, 5, 10)
@@ -66,6 +66,7 @@ func main() {
 	copy(a11, a)
 	fmt.Println(a, a1, a11)
 
+	// 也可以用异或运算
 	var arr = [...]int{1,2,3,4,5,4,2,1,5,2,1}
 	var a22 = make([]int, len(arr), len(arr))
 	for _,v := range arr{
@@ -73,7 +74,7 @@ func main() {
 	}
 	for k,v := range a22 {
 		if v == 1 {
-			fmt.Println(k,v)
+			fmt.Printf("所有数字中，数字个数为1的是：%d\n",k)
 		}
 	}
 
@@ -111,8 +112,8 @@ func main() {
 	var a25 = [...]int{3, 7, 8, 9, 1}
 	sort.Ints(a25[:])
 	fmt.Println(a25)
-	fmt.Println("-------------------")
 
+	fmt.Println("---------------指针---------------")
 	// 指针
 	// Go里面的指针只能读不能修改
 	// 1、&:取地址
@@ -155,7 +156,7 @@ func main() {
 	fmt.Println(m1)
 	fmt.Println("-----------------")
 
-	rand.Seed(time.Now().UnixNano()) //初始化随机数种子
+	rand.Seed(time.Now().UnixNano()) //初始化随机数值
 	var scoreMap = make(map[string]int, 200)
 	for i := 0; i < 100; i++ {
 		key := fmt.Sprintf("stu%02d", i) //生成stu开头的字符串

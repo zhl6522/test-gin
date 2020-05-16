@@ -72,7 +72,7 @@ func (c *cat2)move() {
 	fmt.Println("走猫步")
 }
 func (c *cat2) eat(food string) {
-	fmt.Printf("吃猫%s~\n", food)
+	fmt.Printf("猫吃%s~\n", food)
 }
 type chicken struct {
 	feet	int8
@@ -106,12 +106,12 @@ func (c *cat3)move() {
 }
 // cat3实现了eater接口
 func (c *cat3) eat(food string) {
-	fmt.Printf("吃猫%s~\n", food)
+	fmt.Printf("猫吃%s~\n", food)
 }
 
 // 空接口：没有必要起名字，通常定义成下面的格式：
 //interface{}
-// 所有的类型都是先了空接口，也就是任意类型的变量都能保存空接口中。
+// 所有的类型都是先有空接口，也就是任意类型的变量都能保存空接口中。
 
 // 空接口作为你函数参数
 func show(a interface{}) {

@@ -1,6 +1,7 @@
 package main
 
 import (
+	//"bufio"
 	"fmt"
 	"os"
 )
@@ -52,6 +53,9 @@ func addStudent() {
 	fmt.Scanln(&stuId)
 	fmt.Print("请输入学生的姓名:")
 	fmt.Scanln(&stuName)
+	/*reader := bufio.NewReader(os.Stdin)
+	fmt.Print("请输入学生的姓名:")
+	stuName,_ = reader.ReadString('\n')*/
 	fmt.Print("请输入学生的年龄:")
 	fmt.Scanln(&stuAge)
 	fmt.Print("请输入学生的分数:")

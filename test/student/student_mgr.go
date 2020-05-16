@@ -37,7 +37,12 @@ func (s studentMgr) addStudent() {
 	// 获取用户输入
 	fmt.Print("请输入学生的学号:")
 	fmt.Scanln(&stuId)
-
+	// 查询该学号对应的学生信息，如果有提示已存在
+	_,ok := s.allStudent[stuId];
+	if ok {
+		fmt.Println("该学号已被人使用")
+		return
+	}
 	//fmt.Scanln(&stuName)	// 如果姓名里有空格，就没法录入全部
 	reader := bufio.NewReader(os.Stdin)
 	fmt.Print("请输入学生的姓名:")
