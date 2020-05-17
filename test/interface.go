@@ -3,7 +3,7 @@ package main
 import "fmt"
 
 // 引出接口的实例
-// 接口是一种类型，是一种特殊的类型，它规定了变量有哪些方法。
+// 接口是一种类型，是一种的抽象类型，它规定了变量有哪些方法。
 
 // 定义一个能叫的类型
 type speaker interface {
@@ -120,11 +120,12 @@ func show(a interface{}) {
 // 类型断言	我想知道空接口接收值具体是什么
 func assign(a interface{}) {
 	fmt.Printf("%T\n", a)
-	str, ok := a.(string)
-	if !ok {
-		fmt.Print("猜错了\n")
-	} else {
+	if str, ok := a.(string); ok{
 		fmt.Printf("传进来的是一个字符串：%v\n", str)
+	} else if str, ok := a.(int); ok {
+		fmt.Printf("传进来的是一个int：%v\n", str)
+	} else {
+		fmt.Print("传进来的我也不知道\n",)
 	}
 }
 // 类型断言2
@@ -195,7 +196,6 @@ func main() {
 	fmt.Println(a1)
 	a1 = c5
 	fmt.Println(a1)
-
 
 	fmt.Println("---------------空接口---------------")
 	// interface：关键字

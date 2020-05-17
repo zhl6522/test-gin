@@ -9,7 +9,11 @@ import (
 )
 // 文件三种读取方法
 func readFromFile1() {
-	fileobj,err := os.Open("./fmt.go")
+	//var fileobj *os.File	//指针的file类型
+	//var err error
+	//fileobj,err = os.Open("./fmt.go")
+	fileobj,err := os.Open("./fmt1.go")
+	//defer fileobj.Close()		// 不能写在这里的原因：os.open返回是多个值，如果打开报错了，err是非nil，fileobj是对应类型的零值（当前是指针类型的nil），nil不能调用Close(),就会panic（空指针的引用）。
 	if err != nil {
 		fmt.Printf("open file failed, error:%v", err)
 		return
