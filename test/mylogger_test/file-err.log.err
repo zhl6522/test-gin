@@ -1,0 +1,18 @@
+[2020-05-18 19:43:31] [ERROR] [main:main.go:19] 这是一条Error日志,id:10086 name:错误信息
+[2020-05-18 19:43:31] [FATAL] [main:main.go:20] 这是一条Fatal日志
+[2020-05-18 19:43:34] [ERROR] [main:main.go:19] 这是一条Error日志,id:10086 name:错误信息
+[2020-05-18 19:43:34] [FATAL] [main:main.go:20] 这是一条Fatal日志
+[2020-05-18 19:43:37] [ERROR] [main:main.go:19] 这是一条Error日志,id:10086 name:错误信息
+[2020-05-18 19:43:37] [FATAL] [main:main.go:20] 这是一条Fatal日志
+[2020-05-18 19:43:40] [ERROR] [main:main.go:19] 这是一条Error日志,id:10086 name:错误信息
+[2020-05-18 19:43:40] [FATAL] [main:main.go:20] 这是一条Fatal日志
+[2020-05-18 19:43:43] [ERROR] [main:main.go:19] 这是一条Error日志,id:10086 name:错误信息
+[2020-05-18 19:43:43] [FATAL] [main:main.go:20] 这是一条Fatal日志
+[2020-05-18 19:43:46] [ERROR] [main:main.go:19] 这是一条Error日志,id:10086 name:错误信息
+[2020-05-18 19:43:46] [FATAL] [main:main.go:20] 这是一条Fatal日志
+[2020-05-18 19:43:49] [ERROR] [main:main.go:19] 这是一条Error日志,id:10086 name:错误信息
+[2020-05-18 19:43:49] [FATAL] [main:main.go:20] 这是一条Fatal日志
+[2020-05-18 19:43:52] [ERROR] [main:main.go:19] 这是一条Error日志,id:10086 name:错误信息
+[2020-05-18 19:43:52] [FATAL] [main:main.go:20] 这是一条Fatal日志
+[2020-05-18 19:43:55] [ERROR] [main:main.go:19] 这是一条Error日志,id:10086 name:错误信息
+[2020-05-18 19:43:55] [FATAL] [main:main.go:20] 这是一条Fatal日志
