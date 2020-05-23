@@ -13,7 +13,7 @@ type ConsoleLogger struct {
 }
 
 // Newlog 构造函数
-func Newlog(levelStr string) ConsoleLogger {
+func NewConsoleLogger(levelStr string) ConsoleLogger {
 	level, err := parseLogLevel(levelStr)
 	if err != nil {
 		panic(err)

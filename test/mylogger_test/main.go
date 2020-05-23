@@ -2,13 +2,14 @@ package main
 
 import (
 	"test-gin/test/mylogger"
-	"time"
 )
+
+var log mylogger.Logger		// 声明一个全局的接口变量
 
 // 测试自己写的日志库
 func main() {
-	//log := mylogger.Newlog("warning")
-	log := mylogger.NewFileLogger("warning", "./", "file-err.log", 10*1024*1024)
+	//log := mylogger.NewConsoleLogger("warning")		// 终端日志实例
+	log := mylogger.NewFileLogger("info", "./", "file-err.log", 10*1024*1024)		// 文件日志实例
 	for true {
 		log.Debug("这是一条Debug日志")
 		log.Trace("这是一条Trace日志")
@@ -18,7 +19,7 @@ func main() {
 		name := "错误信息"
 		log.Error("这是一条Error日志,id:%d name:%s", id, name)
 		log.Fatal("这是一条Fatal日志")
-		time.Sleep(time.Second * 3)
+		//time.Sleep(time.Second * 3)
 	}
 
 }
