@@ -6,10 +6,17 @@ import (
 )
 
 type MysqlConfig struct {
-	Address		string	`int:"address"`
-	Port		int		`int:"port"`
-	Username	string	`int:"username"`
-	Password	string	`int:"password"`
+	Address		string	`ini:"address"`
+	Port		int		`ini:"port"`
+	Username	string	`ini:"username"`
+	Password	string	`ini:"password"`
+}
+
+type RedisConfig struct {
+	Host		string	`ini:"host"`
+	Port		int		`ini:"port"`
+	Password	string	`ini:"password"`
+	Datebase	int		`ini:""`
 }
 
 func loadIni(x interface{}) {

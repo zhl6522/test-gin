@@ -77,12 +77,8 @@ func (f *FileLogger) checkSize(file *os.File) (*os.File, error) {
 	}
 	// 需要切割日志文件
 	nowStr := time.Now().Format("20060102150405000")
-	/*fileInfo2, err := file.Stat()
-	if err != nil {
-		fmt.Printf("get file info failed2, err:%v\n", err)
-		return nil, err
-	}*/
-	logName := path.Join(f.filePath, fileInfo.Name())				// 拿到当前日志的完整路径
+
+	logName := path.Join(f.filePath, fileInfo.Name())		// 拿到当前日志的完整路径
 	newLogName := fmt.Sprintf("%s.bak%s", logName, nowStr)	// 拼接一个日志文件备份的名字
 	// 1、关闭当前的日志文件
 	file.Close()
