@@ -7,6 +7,6 @@ func main() {
 	ret1 := string(i)	//"97"
 	fmt.Println(ret1)
 	ret2 := fmt.Sprintf("%d", i)
-	fmt.Println(ret2)
+	fmt.Printf("%#v",ret2)
 
 }
