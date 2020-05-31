@@ -3,8 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	i := int(68)
-	ret1 := string(i)
+	i := int(97)
+	ret1 := string(i)	//"97"
 	fmt.Println(ret1)
+	ret2 := fmt.Sprintf("%d", i)
+	fmt.Println(ret2)
 
 }
