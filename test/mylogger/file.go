@@ -75,6 +75,7 @@ func (f *FileLogger) checkSize(file *os.File) (*os.File, error) {
 	if fileInfo.Size() < f.maxFileSize {
 		return  file,nil
 	}
+	//return time.Now().Format("05") == "00" 	// 按照时间切割文件，判断是否为每分钟的00秒
 	// 需要切割日志文件
 	nowStr := time.Now().Format("20060102150405000")
 
@@ -129,7 +130,7 @@ func (f *FileLogger) log(lv LogLevel, format string, a...interface{}) {
 		if err != nil {
 			return
 		}
-		f.fileObj = newFile
+		f.fileObj = newFile		//没有生效 ？	所有的上级f都应该传的是指针，不能使用值接收者
 		/*if f.checkSize(f.fileObj)  {
 			newFile, err := f.splitFile(f.fileObj)		// 日志文件
 			if err != nil {
@@ -137,7 +138,10 @@ func (f *FileLogger) log(lv LogLevel, format string, a...interface{}) {
 			}
 			f.fileObj = newFile
 		}*/
-		fmt.Fprintf(f.fileObj, "[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), getLogString(lv), funcName, fileName, lineNo, msg)
+		_, err = fmt.Fprintf(f.fileObj, "[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), getLogString(lv), funcName, fileName, lineNo, msg)
+		if err != nil {
+			fmt.Println("err:", err)
+		}
 		/*if lv >= ERROR {
 			if f.checkSize(f.errFileObj)  {
 				errNewFile, err := f.splitFile(f.errFileObj)		// 日志文件
@@ -152,28 +156,29 @@ func (f *FileLogger) log(lv LogLevel, format string, a...interface{}) {
 	}
 }
 
-func (f FileLogger) Debug(msg string) {
+func (f *FileLogger) Debug(msg string) {
 		f.log(DEBUG, msg)
 }
 
-func (f FileLogger) Trace(msg string) {
+func (f *FileLogger) Trace(msg string) {
 		f.log(TRACE, msg)
 }
 
-func (f FileLogger) Info(msg string) {
+func (f *FileLogger) Info(msg string) {
 		f.log(INFO, msg)
 }
 
-func (f FileLogger) Warning(msg string) {
+func (f *FileLogger) Warning(msg string) {
 		f.log(WARNING, msg)
 }
 
-func (f FileLogger) Error(format string, a...interface{}) {
-		f.log(ERROR, format, a...)
+func (f *FileLogger) Error(format string, a...interface{}) {
+	// a = slice
+	f.log(ERROR, format, a...)
 }
 
-func (f FileLogger) Fatal(format string, a...interface{}) {
-		f.log(FATAL, format, a...)
+func (f *FileLogger) Fatal(format string, a...interface{}) {
+	f.log(FATAL, format, a...)
 }
 
 func (f *FileLogger) Close() {

@@ -20,14 +20,20 @@ func f1(ch1 chan<- int) {		// chan<- 这么写表示只能发送（单向通道�
 	}
 	close(ch1)		// 关闭通道后，可读不可写。对已关闭的通道输出多于写入数量的取值时，不会报错，返回的OK是false，前面那对应的值为0值（int）/false（bool）/''（string）
 }
+var notifyCh = make(chan struct{}, 5)		// struct{}不占用空间，int占用八个字节，所以更节省空间。通常用来做通知用。
 func f2(ch1 <-chan int, ch2 chan<- int) {
 	defer wg.Done()
 	/*for x := range ch1{		// 这样写可可能ch1还没写完就被range了
 		ch2 <- x*x
-	}*/
+	}
+
+	notifyCh <- struct{}{}
+	// type cat struct {}	// 声明类型
+	// var c1 = cat{}		// 实例化
+	*/
 	for true {
 		x,ok := <-ch1
-		if !ok {
+		if !ok {				// 什么时候ok=false？	ch1通道被关闭的时候
 			break
 		}
 		ch2 <- x*x
@@ -43,7 +49,7 @@ func main() {
 	go f2(a,b)
 	go f2(a,b)
 	wg.Wait()
-	for ret := range b{
+	for ret := range b{		// 什么时候for range会退出？	b通道被关闭的时候
 		fmt.Println(ret)
 	}
 

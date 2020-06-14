@@ -39,7 +39,7 @@ func b() {
 		fmt.Printf("B:%d\n", i)
 	}
 }
-var wg sync.WaitGroup	// 多个goroutine同步
+var wg sync.WaitGroup	// 多个goroutine等待组
 // 程序启动之后会创建一个主goroutine去执行
 func main() {
 
@@ -62,12 +62,13 @@ func main() {
 	wg.Wait()*/	// 等待wg的计算器减为0
 
 	wg.Add(2)
-	runtime.GOMAXPROCS(4)		// 默认CPU的逻辑核心数，默认跑满整个CPU。在mac上可以看到 a/b的数据交叉执行
+	runtime.GOMAXPROCS(4)		// 默认CPU的逻辑核心数（go1.5之后），默认跑满整个CPU。在mac上可以看到 a/b的数据交叉执行
+	//runtime.GOMAXPROCS(1)		// 只占用一个核，比如日志收集。
 	go a()
 	go b()
 	wg.Wait()
 	fmt.Println(runtime.NumCPU())
-	// goroutine调度模型
+	// goroutine调度模型(goroutine的本质)
 	/*GMP
 	G 就是个goroutine
 	M（machine）是Go运行时（runtime）对操作系统内核线程的虚拟， M与内核线程一般是一一映射的关系
@@ -80,4 +81,50 @@ func main() {
 	// M:N 把m个goroutine分配给n个操作系统线程去执行。
 	// goroutine初始栈的大小是2k。
 
+	// channel
+	/*
+	为什么需要channel？
+		通过channel实现多个goroutine之间的通信。
+		csp：通过通信来共享内存。
+	channel是一种类型，一种引用类型。make函数初始化之后才能使用。（slice、map、channel）
+		channel声明 var ch chan 元素类型
+		channel初始化 ch=make(chan 元素类型，[缓冲区大小])
+		channel的操作：
+			发送：ch <- 100
+			接收：x := <-ch
+			关闭：close(ch)	非必须
+	带缓冲区的通道与不带缓冲区的通道
+		快递员送快递的示例，有缓冲区就是有快递柜。
+	从通道中取值：
+		for true {
+			x,ok := <-ch1
+			if !ok {				// 什么时候ok=false？	ch1通道被关闭的时候
+				break
+			}
+			ch2 <- x*x
+		}
+		for ret := range b{		// 什么时候for range会退出？	b通道被关闭的时候
+			fmt.Println(ret)
+		}
+	单向通道：
+		通常是用作函数的参数，只读通道 <-chan int 和只写通道 chan<- int
+	通道的各种考虑情况：https://www.liwenzhou.com/posts/Go/14_concurrence/里的通道总结
+	select多路复用
+		同一时刻有多个通道要操作的场景下，使用select。
+		func main() {
+			ch := make(chan int, 1)
+			for i := 0; i < 10; i++ {
+				select {
+				case x := <-ch:
+					fmt.Println(x)
+				case ch <- i:
+				}
+			}
+		}
+		使用select语句能提高代码的可读性。
+			可处理一个或多个channel的发送/接收操作。
+			如果多个case同时满足，select会随机选择一个。
+			对于没有case的select{}会一直等待，可用于阻塞main函数。
+
+	*/
 }
