@@ -40,7 +40,7 @@ func loadIni(fileName string,data interface{}) (err error) {
 			//fmt.Errorf("data should be a pointer.")		// 格式化输出之后返回一个error类型
 	}
 	// 0.2、传进来的data参数必须是结构体类型指针（因为配置文件中各种键值对需要赋值给结构体的字段）
-	if t.Elem().Kind() != reflect.Struct {
+	if t.Elem().Kind() != reflect.Struct {		// 获取结构体实例的反射类型对象的种类
 		err = errors.New("data param should be a struct pointer.")		// 新创建一个错误
 		return
 	}
