@@ -17,6 +17,13 @@ type FileLogger struct {
 	fileObj		*os.File	// 结构体的指针 （os包的file结构体）
 	errFileObj	*os.File
 	maxFileSize	int64
+	logChan		chan	*logMsg
+}
+
+type logMsg struct {
+	level	LogLevel
+	msg,funcName,fileName,timestamp	string
+	line	int
 }
 
 // NewFileLogger 构造函数
@@ -26,10 +33,11 @@ func NewFileLogger(levelStr, fp, fn string, maxSize int64) *FileLogger {
 		panic(err)
 	}
 	fl := &FileLogger{
-		Level:       logLevel,
-		filePath:    fp,
-		fileName:    fn,
-		maxFileSize: maxSize,
+		Level:      	logLevel,
+		filePath:   	fp,
+		fileName:   	fn,
+		maxFileSize:	maxSize,
+		logChan:		make(chan *logMsg, 50000),
 	}
 	err = fl.initFile()	// 按照文件路径和文件名将文件打开
 	if err != nil {
@@ -120,39 +128,52 @@ func (f *FileLogger) splitFile(file *os.File)(*os.File, error) {
 	return fileObj, nil
 }
 
+func (f *FileLogger) writeLogBackground() {
+	newFile, err := f.checkSize(f.fileObj)
+	if err != nil {
+		return
+	}
+	f.fileObj = newFile		//没有生效 ？	所有的上级f都应该传的是指针，不能使用值接收者
+	/*if f.checkSize(f.fileObj)  {
+		newFile, err := f.splitFile(f.fileObj)		// 日志文件
+		if err != nil {
+			return
+		}
+		f.fileObj = newFile
+	}*/
+	_, err = fmt.Fprintf(f.fileObj, "[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), getLogString(lv), funcName, fileName, lineNo, msg)
+	if err != nil {
+		fmt.Println("err:", err)
+	}
+	/*if lv >= ERROR {
+		if f.checkSize(f.errFileObj)  {
+			errNewFile, err := f.splitFile(f.errFileObj)		// 日志文件
+			if err != nil {
+				return
+			}
+			f.errFileObj = errNewFile
+		}
+		// 如果要记录的日志大于等于ERROR级别，我还要在err日志文件中在记录一遍
+		fmt.Fprintf(f.errFileObj, "[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), getLogString(lv), funcName, fileName, lineNo, msg)
+	}*/
+}
+
 // 记录日志的方法
 func (f *FileLogger) log(lv LogLevel, format string, a...interface{}) {
 	if f.enable(lv) {
 		msg := fmt.Sprintf(format, a...)
 		now := time.Now()
 		funcName, fileName, lineNo := getInfo(3)
-		newFile, err := f.checkSize(f.fileObj)
-		if err != nil {
-			return
+		// 先把日志发送到通道中
+		logTmp := &logMsg{
+			level:     lv,
+			msg:       msg,
+			funcName:  funcName,
+			fileName:  fileName,
+			timestamp: now.Format("2006-01-02 15:04:05"),
+			line:      lineNo,
 		}
-		f.fileObj = newFile		//没有生效 ？	所有的上级f都应该传的是指针，不能使用值接收者
-		/*if f.checkSize(f.fileObj)  {
-			newFile, err := f.splitFile(f.fileObj)		// 日志文件
-			if err != nil {
-				return
-			}
-			f.fileObj = newFile
-		}*/
-		_, err = fmt.Fprintf(f.fileObj, "[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), getLogString(lv), funcName, fileName, lineNo, msg)
-		if err != nil {
-			fmt.Println("err:", err)
-		}
-		/*if lv >= ERROR {
-			if f.checkSize(f.errFileObj)  {
-				errNewFile, err := f.splitFile(f.errFileObj)		// 日志文件
-				if err != nil {
-					return
-				}
-				f.errFileObj = errNewFile
-			}
-			// 如果要记录的日志大于等于ERROR级别，我还要在err日志文件中在记录一遍
-			fmt.Fprintf(f.errFileObj, "[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), getLogString(lv), funcName, fileName, lineNo, msg)
-		}*/
+		f.logChan <- logTmp
 	}
 }
 

@@ -182,7 +182,7 @@ func main() {
 		{name: "大王八", age: 9000},
 	}
 	for _, stu := range stus {
-		fmt.Printf("%p\n", &stu.name)		// 指向同一个为map的结构体？？？
+		fmt.Printf("%p\n", &stu.name)		// 因为stu只有一个内存地址,stu在for range中是同一个变量
 		m0[stu.name] = &stu			// 传的是指针的内存地址
 	}
 	fmt.Printf("%v\n", m0)
