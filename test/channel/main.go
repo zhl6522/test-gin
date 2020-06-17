@@ -38,7 +38,10 @@ func f2(ch1 <-chan int, ch2 chan<- int) {
 		}
 		ch2 <- x*x
 	}
-	once.Do(func() { close(ch2) })	// 确保某个操作只执行一次
+	f := func() {
+		close(ch2)
+	}
+	once.Do(f)	// 确保某个操作只执行一次	Do只能接收一个没有参数没有返回值的函数（匿名/闭包）
 }
 
 func main() {

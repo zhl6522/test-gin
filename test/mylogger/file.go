@@ -62,6 +62,12 @@ func (f *FileLogger) initFile()(error) {
 	// 日志文件都已经打开
 	f.fileObj = fileObj
 	f.errFileObj = errFileObj
+	// 开启一个goroutine执行后台写日志的任务（开启多个加锁也会耗费资源）
+	go f.writeLogBackground()
+	// 开启3个后台的goroutine去往文件里写日志
+	/*for i := 0; i < 2; i++ {		// 在 Windows4核CPU上，开启多个goroutine会使得句柄刚被关闭，而另一个goroutine就去写了。抛出的错误err: write file-err.log: file already closed \n\r get file info failed, err:GetFileType file-err.log: use of closed file
+		go f.writeLogBackground()
+	}*/
 	return nil
 }
 
@@ -129,33 +135,45 @@ func (f *FileLogger) splitFile(file *os.File)(*os.File, error) {
 }
 
 func (f *FileLogger) writeLogBackground() {
-	newFile, err := f.checkSize(f.fileObj)
-	if err != nil {
-		return
-	}
-	f.fileObj = newFile		//没有生效 ？	所有的上级f都应该传的是指针，不能使用值接收者
-	/*if f.checkSize(f.fileObj)  {
-		newFile, err := f.splitFile(f.fileObj)		// 日志文件
+	for true {
+		newFile, err := f.checkSize(f.fileObj)
 		if err != nil {
 			return
 		}
-		f.fileObj = newFile
-	}*/
-	_, err = fmt.Fprintf(f.fileObj, "[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), getLogString(lv), funcName, fileName, lineNo, msg)
-	if err != nil {
-		fmt.Println("err:", err)
-	}
-	/*if lv >= ERROR {
-		if f.checkSize(f.errFileObj)  {
-			errNewFile, err := f.splitFile(f.errFileObj)		// 日志文件
+		f.fileObj = newFile		//没有生效 ？	所有的上级f都应该传的是指针，不能使用值接收者
+		/*if f.checkSize(f.fileObj)  {
+			newFile, err := f.splitFile(f.fileObj)		// 日志文件
 			if err != nil {
 				return
 			}
-			f.errFileObj = errNewFile
+			f.fileObj = newFile
+		}*/
+
+		select {
+		case logTmp := <-f.logChan:
+			// 把日志拼出来
+			logInfo := fmt.Sprintf("[%s] [%s] [%s:%s:%d] %s\n", logTmp.timestamp, getLogString(logTmp.level), logTmp.funcName, logTmp.fileName, logTmp.line, logTmp.msg)
+			_, err = fmt.Fprintf(f.fileObj, logInfo)
+			if err != nil {
+				fmt.Println("err:", err)
+			}
+			/*if logTmp.level >= ERROR {
+				if f.checkSize(f.errFileObj)  {
+					errNewFile, err := f.splitFile(f.errFileObj)		// 日志文件
+					if err != nil {
+						return
+					}
+					f.errFileObj = errNewFile
+				}
+				// 如果要记录的日志大于等于ERROR级别，我还要在err日志文件中在记录一遍
+				fmt.Fprintf(f.errFileObj, logInfo)
+			}*/
+		default:
+			// 取不到日志先休息500毫秒
+			time.Sleep(time.Microsecond*500)
+
 		}
-		// 如果要记录的日志大于等于ERROR级别，我还要在err日志文件中在记录一遍
-		fmt.Fprintf(f.errFileObj, "[%s] [%s] [%s:%s:%d] %s\n", now.Format("2006-01-02 15:04:05"), getLogString(lv), funcName, fileName, lineNo, msg)
-	}*/
+	}
 }
 
 // 记录日志的方法
@@ -165,6 +183,7 @@ func (f *FileLogger) log(lv LogLevel, format string, a...interface{}) {
 		now := time.Now()
 		funcName, fileName, lineNo := getInfo(3)
 		// 先把日志发送到通道中
+		// 1、造一个logMsg对象
 		logTmp := &logMsg{
 			level:     lv,
 			msg:       msg,
@@ -173,7 +192,13 @@ func (f *FileLogger) log(lv LogLevel, format string, a...interface{}) {
 			timestamp: now.Format("2006-01-02 15:04:05"),
 			line:      lineNo,
 		}
-		f.logChan <- logTmp
+		//f.logChan <- logTmp		// 直接这样写，如果通道满了或异常关闭等特殊原因就会出现阻塞触发问题
+		select {
+		case f.logChan <- logTmp:
+		default:
+			// 日志就丢弃，保证不出现阻塞
+
+		}
 	}
 }
 
