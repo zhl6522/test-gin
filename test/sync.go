@@ -2,7 +2,9 @@ package main
 
 import (
 	"fmt"
+	//"strconv"
 	"sync"
+	"sync/atomic"
 	"time"
 )
 
@@ -20,7 +22,11 @@ var (
 	// 如果读远远大于写的时候，读写互斥锁比互斥锁效率高
 )
 
-//var smap sync.Map			// Go语言中内置的map不是并发安全的。
+var m2 = sync.Map{}
+
+//var smap sync.Map			// Go语言中内置的map不是并发安全的。 使用并发访问的Map；同时sync.Map内置了诸如Store、Load、LoadOrStore、Delete、Range等操作方法。
+
+var z	int64
 
 // 读操作
 func read() {
@@ -32,7 +38,7 @@ func read() {
 }
 
 func write() {
-	wg.Done()
+	defer wg.Done()
 	rwlock.Lock()
 	y++
 	time.Sleep(time.Millisecond*5)
@@ -48,13 +54,19 @@ func add() {
 	wg.Done()
 }
 
+func add2() {
+	atomic.AddInt64(&z, 1)
+	wg.Done()
+}
+
 func main() {
 	/*wg.Add(2)
 	go add()		// 可能两者同时读到50，也同时返回50
 	go add()
 	wg.Wait()
 	fmt.Println(x)*/
-	start := time.Now()
+
+	/*start := time.Now()
 	for i := 0; i < 100; i++ {
 		wg.Add(1)
 		go write()
@@ -65,5 +77,30 @@ func main() {
 		go read()
 	}
 	wg.Wait()
-	fmt.Println(time.Now().Sub(start))
+	fmt.Println(time.Now().Sub(start))*/
+
+	/*wg := sync.WaitGroup{}
+	for i := 0; i < 20; i++ {
+		wg.Add(1)
+		go func(n int) {
+			key := strconv.Itoa(n)
+			m2.Store(key, n)		// 必须使用sync.Map内置的Store方法设置键值对
+			value,_ := m2.Load(key)	// 必须使用sunc.Map提供的Load方法根据key取值
+			fmt.Printf("k=:%v,v:=%v\n", key, value)
+			wg.Done()
+		}(i)
+	}
+	wg.Wait()*/
+
+	wg.Add(100000)
+	for i := 0; i < 100000; i++ {
+		go add2()
+	}
+	wg.Wait()
+	fmt.Println(z)
+
+	// 比较并交换
+	z = 100
+	ok := atomic.CompareAndSwapInt64(&z, 100, 200)
+	fmt.Println(ok, z)
 }
