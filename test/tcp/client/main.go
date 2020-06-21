@@ -22,7 +22,7 @@ func main() {
 	reader := bufio.NewReader(os.Stdin)
 	for true {
 		fmt.Println("请说话：")
-		msg, _ := reader.ReadString('\r')
+		msg, _ := reader.ReadString('\n')		// 读到换行
 		msg = strings.TrimSpace(msg)
 		if msg == "exit" {
 			break

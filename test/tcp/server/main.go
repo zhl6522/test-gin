@@ -1,19 +1,32 @@
 package main
 
 import (
+	"bufio"
 	"fmt"
 	"net"
+	"os"
+	"strings"
 )
 
 // tcp server端
 func processConn(conn net.Conn) {
 	var tmp [128]byte
-	n, err := conn.Read(tmp[:])
-	if err != nil {
-		fmt.Println("read from conn failled,err:", err)
-		return
+	reader := bufio.NewReader(os.Stdin)
+	for true {
+		n, err := conn.Read(tmp[:])
+		if err != nil {
+			fmt.Println("read from conn failled,err:", err)
+			return
+		}
+		fmt.Println(string(tmp[:n]))
+		fmt.Println("请回复：")
+		msg, _ := reader.ReadString('\n')		// 读到换行
+		msg = strings.TrimSpace(msg)
+		if msg == "exit" {
+			break
+		}
+		conn.Write([]byte(msg))
 	}
-	fmt.Println(string(tmp[:n]))
 }
 
 func main() {
