@@ -52,6 +52,7 @@ func main() {
 	go f2(a,b)
 	go f2(a,b)
 	wg.Wait()
+	//close(ch2)
 	for ret := range b{		// 什么时候for range会退出？	b通道被关闭的时候
 		fmt.Println(ret)
 	}

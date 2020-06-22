@@ -22,9 +22,11 @@ var (
 	// 如果读远远大于写的时候，读写互斥锁比互斥锁效率高
 )
 
-var m2 = sync.Map{}
+var m2 = sync.Map{}			// 开箱即用（不需要make初始化）的并发安全的Map
 
 //var smap sync.Map			// Go语言中内置的map不是并发安全的。 使用并发访问的Map；同时sync.Map内置了诸如Store、Load、LoadOrStore、Delete、Range等操作方法。
+//var once sync.Once		//	案例：test/channel/main.go 某些函数只需要执行一次的时候，就可以使用sync.Once
+							// 比如并发
 
 var z	int64
 
@@ -54,7 +56,7 @@ func add() {
 	wg.Done()
 }
 
-func add2() {
+func add2() {			// 原子操作 Go语言内置了一些针对内置的基本数据类型的一些并发安全的操作
 	atomic.AddInt64(&z, 1)
 	wg.Done()
 }
