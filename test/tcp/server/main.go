@@ -10,9 +10,10 @@ import (
 
 // tcp server端
 func processConn(conn net.Conn) {
-	var tmp [128]byte
-	reader := bufio.NewReader(os.Stdin)
+	defer conn.Close()
 	for true {
+		reader := bufio.NewReader(os.Stdin)
+		var tmp [128]byte
 		n, err := conn.Read(tmp[:])
 		if err != nil {
 			fmt.Println("read from conn failled,err:", err)

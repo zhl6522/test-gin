@@ -17,6 +17,7 @@ func main() {
 		fmt.Println("dial 127.0.0.1:2000 failed，err:", err)
 		return
 	}
+	defer conn.Close()
 	// 2、发送数据
 	//var msg string
 	reader := bufio.NewReader(os.Stdin)
@@ -27,7 +28,17 @@ func main() {
 		if msg == "exit" {
 			break
 		}
-		conn.Write([]byte(msg))
+		_, err = conn.Write([]byte(msg))
+		if err != nil {
+			return
+		}
+		buf := [512]byte{}
+		n, err := conn.Read(buf[:])
+		if err != nil {
+			fmt.Println("recv failed, err:", err)
+			return
+		}
+		fmt.Println(string(buf[:n]))
 	}
 	/*if len(os.Args) < 2 {
 		msg = "Hello world!"
