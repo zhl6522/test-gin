@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
-	"test-gin/controller"
+	"test-gin/test-file/controller"
 	//"golang.org/x/autotls"
 	//"golang.org/x/crypto/acme/autocert"
 )
@@ -98,7 +98,7 @@ func main() {
 		shopGroup.GET("/test", controller.Redirect2)
 	}
 
-	r.GET("/test3", controller.StatCost(), func(c *gin.Context) {	//给/test3路由单独注册中间件（可注册多个）
+	r.GET("/test3", controller.StatCost(), func(c *gin.Context) { //给/test3路由单独注册中间件（可注册多个）
 		name := c.MustGet("name").(string)		//从上下文取值
 		log.Println(name)
 		c.JSON(http.StatusOK, gin.H{

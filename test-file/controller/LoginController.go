@@ -5,7 +5,7 @@ import (
 	"github.com/gin-gonic/gin"
 	"log"
 	"net/http"
-	"test-gin/model"
+	"test-gin/test-file/model"
 )
 
 // 绑定JSON的示例 ({"user": "zhl", "password": "123456"})

@@ -17,8 +17,8 @@ var x = 0
 var (
 	y = 0
 	wg		sync.WaitGroup
-	lock	sync.Mutex		// 互斥锁
-	rwlock	sync.RWMutex	// 读写互斥锁
+	lock	sync.Mutex		// 互斥锁		防止同一时刻多个goroutine操作同一个资源。
+	rwlock	sync.RWMutex	// 读写互斥锁	适用于度多写少的场景，才能提高程序的执行效率。	特点：1、读的goroutine来了获取的是读锁，后续的goroutine能读不能写。2、写的goroutine来了获取的是写锁，后续的goroutine不管是读是写都要等待获取锁。
 	// 如果读远远大于写的时候，读写互斥锁比互斥锁效率高
 )
 
