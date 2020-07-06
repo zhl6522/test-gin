@@ -1,0 +1,33 @@
+package string
+
+import (
+	"reflect"
+	"testing"
+)
+
+func TestSplit(t *testing.T) {
+	ret := Split("babcdbef", "b")
+	want := []string{"", "a", "cd", "ef"}
+	if !reflect.DeepEqual(ret, want) {	// 两个类型无法直接比较，才使用的DeepEqual
+		// 测试用例失败了
+		t.Errorf("want:%v but got:%v\n", want, ret)
+	}
+}
+
+func Test2Split(t *testing.T) {
+	ret := Split("a:b:c", ":")
+	want := []string{"a", "b", "c"}
+	if !reflect.DeepEqual(ret, want) {
+		// 测试用例失败了
+		t.Errorf("want:%v but got:%v\n", want, ret)
+	}
+}
+
+func Test3Split(t *testing.T) {
+	ret := Split("abcef", "bc")
+	want := []string{"a", "ef"}
+	if !reflect.DeepEqual(ret, want) {
+		// 测试用例失败了
+		t.Fatalf("want:%v but got:%v\n", want, ret)
+	}
+}
