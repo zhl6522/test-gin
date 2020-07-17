@@ -1,3 +1,3 @@
-按照[网上说明的](https://www.liwenzhou.com/posts/Go/performance_optimisation/)下载完成运行后，在终端输入dot -version查看是否安装成功。
+按照[pprof博客](https://www.liwenzhou.com/posts/Go/performance_optimisation/)下载完成运行后，在终端输入dot -version查看是否安装成功。
 但是在GoLand编辑器pprof模式里面运行"web"报错：Failed to execute dot. Is Graphviz installed? Error: exec: "dot": executable file not found in %PATH%，重新打开窗口还是这个错误。
 解决方法：重启GoLand编辑器，重新进入pprof模式里面运行"web"即可。
