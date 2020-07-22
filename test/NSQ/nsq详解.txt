@@ -1,0 +1,9 @@
+https://www.bilibili.com/video/BV1QJ411V73q?p=142
+
+https://nsq.io/overview/quick_start.html
+1、$ nsqlookupd
+2、$ nsqd --lookupd-tcp-address=127.0.0.1:4160
+3、$ nsqadmin --lookupd-http-address=127.0.0.1:4161
+4、// nsq_producer/main.go		producer.exe执行
+5、// nsq_consumer/main.go		consumer.exe执行
+6、在4里面输入内容，5里面会看到数据，http://127.0.0.1:4171/topics/topic_demo里面也会有生成数据信息
