@@ -2,7 +2,7 @@
 ```bash
 Go学习者
 ```
-### 非test
+### 其他
 ```bash
 test-gin练习
 ```
