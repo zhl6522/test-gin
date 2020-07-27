@@ -11,7 +11,7 @@ import (
 var wg sync.WaitGroup
 //var notify bool
 //var exitChan chan bool	//没有初始化
-var exitChan = make(chan bool,1)
+//var exitChan = make(chan bool,1)
 
 func f2(ctx context.Context) {
 	defer wg.Done()
@@ -50,12 +50,16 @@ LOOP:
 	}
 }
 
+
 func main() {
-	ctx, chancel := context.WithCancel(context.Background())
+	ctx, cancel := context.WithCancel(context.Background())
+	//defer cancel()		// 当我们取完需要的整数后调用cancel
+
+
 	wg.Add(1)
 	go f(ctx)
 	time.Sleep(time.Second*5)
 	// 如何通知子goroutine退出
-	chancel()
+	cancel()
 	wg.Wait()
 }
