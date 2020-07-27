@@ -1,0 +1,19 @@
+
+Gin框架安装之前要做的事情：
+1、设置export GO111MODULE=on和export GOPROXY=https://goproxy.io，不然下载安装Gin包不成功
+2、https://www.liwenzhou.com/posts/Go/Gin_framework/
+gin渲染模板需要引入"html/template"模块：
+	import "html/template"
+	func sayHello(w http.ResponseWriter, r *http.Request) {
+		t, err := template.ParseFiles("./index.tmpl")
+		if err != nil{
+			fmt.Println("err:%v", err)
+			return
+		}
+		name :="zhl"
+		err =t.Execute(w, name)
+		if err != nil {
+			fmt.Println("file err:%v", err)
+			return
+		}
+	}
