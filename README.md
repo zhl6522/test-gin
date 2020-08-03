@@ -1,4 +1,4 @@
-## [test](https://github.com/zhl6522/test-gin/test)
+## [test](https://github.com/zhl6522/test-gin/tree/master/test) `go基础`
 ```bash
 Go学习者
 ```
