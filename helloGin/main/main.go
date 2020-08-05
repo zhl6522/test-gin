@@ -2,7 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
-	"helloGin/controller"
+	"github.com/my/repo/test-gin/helloGin/controller"
 	"net/http"
 )
 
