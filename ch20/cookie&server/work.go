@@ -25,7 +25,9 @@ func main() {
 	r := gin.Default()
 	r.GET("/login", func(c *gin.Context) {
 		// 设置cookie
-		c.SetCookie("abc", "123", 60, "/", "localhost", 0, false, true)
+		// 配置版本不一样 SetCookie传参不一致
+		//c.SetCookie("abc", "123", 60, "/", "localhost", 0, false, true)
+		c.SetCookie("abc", "123", 60, "/", "localhost", false, true)
 		// 返回信息
 		c.String(http.StatusOK, "Login success!")
 	})
