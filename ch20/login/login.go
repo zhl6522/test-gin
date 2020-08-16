@@ -14,24 +14,21 @@ type Login struct {
 func main() {
 	r := gin.Default()
 	// JSON绑定
-	r.POST("/loginJSON", func(c *gin.Context) {
+	r.POST("/loginForm", func(c *gin.Context) {
 		// 声明接收的变量
-		var json Login
-		// 将require的body中的数据，自动按照json格式解析到结构体
-		if err := c.ShouldBindJSON(&json);err != nil {
-			// 返回错误信息
+		var form Login
+		// Bind()默认解析并绑定form格式
+		// 根据请求头中content-type自行推断
+		if err := c.Bind(&form);err != nil {
 			c.JSON(http.StatusBadRequest, gin.H{"error:":err.Error()})
 			return
 		}
 		// 判断用户密码是否正确
-		if json.User != "root" || json.Password != "admin" {
+		if form.User != "root" || form.Password != "admin" {
 			c.JSON(http.StatusBadRequest, gin.H{"status:":"304"})
 			return
 		}
 		c.JSON(http.StatusOK, gin.H{"status:":"200"})
-
-		//  curl http://127.0.0.1:8080/loginJSON -H 'content-type:application/json' -d "{\"user\":\"root\", \"password\":\"admin\"}" -X POST
-		//  curl http://127.0.0.1:8080/loginJSON -H 'content-type:application/json' -d "{\"user\":\"root\", \"password\":\"root\"}" -X POST
 	})
 
 	r.Run()

@@ -20,8 +20,8 @@ func main() {
 			// secure 是否只能通过https访问
 			// httpOnly bool 是否允许别通过js获取自己的cookie
 			// 配置版本不一样 SetCookie传参不一致
-			//c.SetCookie("key_cookie", "val_cookie", 60, "/", "localhost", 0,false, true)
-			c.SetCookie("key_cookie", "val_cookie", 60, "/", "localhost", false, true)
+			c.SetCookie("key_cookie", "val_cookie", 60, "/", "localhost", 0,false, true)
+			//c.SetCookie("key_cookie", "val_cookie", 60, "/", "localhost", false, true)
 		}
 		fmt.Printf("cookie的值是：%s\n", cookie)
 	})
