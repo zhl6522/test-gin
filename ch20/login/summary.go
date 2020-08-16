@@ -7,6 +7,11 @@ import (
 
 func main() {
 	r := gin.Default()
+	// 重定向
+	r.GET("/redirect", func(c *gin.Context) {
+		// 支持内部和外部重定向
+		c.Redirect(http.StatusMovedPermanently,"http://www.baidu.com")
+	})
 	// 1、json
 	r.GET("/someJSON", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{"message":"someJSON", "status":200})
