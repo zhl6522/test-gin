@@ -57,4 +57,10 @@ func main() {
 	fmt.Println("5秒过去了。。。")
 	//time.Sleep(5 * time.Second)
 
+	st := time.Now()
+	for i := 0; i < 1000; i++ {
+		fmt.Print("*")
+	}
+	elapsed := time.Since(st)
+	fmt.Println("\nApp elapsed: ", elapsed)
 }
