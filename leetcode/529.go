@@ -28,11 +28,11 @@ func updateBoard(board [][]byte, click []int) [][]byte {
 			for _, di := range d {
 				x, y := i + di[0], j + di[1]
 				if 0 <= x && x < m && 0 <= y && y < n && board[x][y] == 'M' {	// 四面八方8个位置是否有雷
-					c++								// 地雷
+					c++								// 周围地雷数目
 				}
 			}
 			if c > '0' {
-				board[i][j] = c			// 相邻地雷的数量
+				board[i][j] = c			// 这个位置周围地雷的数量
 			} else {
 				board[i][j] = 'B'
 				for _, di := range d {
