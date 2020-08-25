@@ -15,13 +15,13 @@ func main() {
 }
 
 func subtractProductAndSum(n int) int {
-	var j,sum,number int
+	var j, sum, number int
 	j = 1
 	for n > 0 {
-		number = n%10
+		number = n % 10
 		j *= number
 		sum += number
-		n = n/10
+		n = n / 10
 	}
-	return j-sum
+	return j - sum
 }

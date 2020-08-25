@@ -5,12 +5,12 @@ import (
 )
 
 func main() {
-	candies := []int{2,13,5,1,13}
+	candies := []int{2, 13, 5, 1, 13}
 	//extraCandies := 3
 	// 获取最大值
 	max := candies[0]
 	for i := 1; i < len(candies); i++ {
-		if candies[i]>max {
+		if candies[i] > max {
 			max = candies[i]
 		}
 	}
@@ -22,5 +22,5 @@ func main() {
 			ret[i] = true
 		}
 	}
-	fmt.Println(candies,ret)
+	fmt.Println(candies, ret)
 }

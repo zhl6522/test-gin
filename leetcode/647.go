@@ -23,19 +23,19 @@ func strings(nums string) int {
 			if let/2 == 0 {
 				u++
 				fmt.Println(ret)
-				continue;
+				continue
 			}
 			for k := 0; k < let/2; k++ {
-				nk := let-k-1
+				nk := let - k - 1
 				if ret[k] == ret[nk] {
 					fmt.Printf("%v & %v\n", ret[k], ret[nk])
-					k2 := k+1
+					k2 := k + 1
 					if k2 == let/2 {
 						u++
 						fmt.Println(ret)
 					}
 				} else {
-					break;
+					break
 				}
 			}
 		}

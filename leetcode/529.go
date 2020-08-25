@@ -22,22 +22,23 @@ func updateBoard(board [][]byte, click []int) [][]byte {
 	if board[a][b] == 'M' {
 		board[a][b] = 'X'
 	} else if board[a][b] == 'E' {
-		m, n := len(board), len(board[0])			// m:宽 n:长
-		var f func(int, int); f = func(i, j int) {
+		m, n := len(board), len(board[0]) // m:宽 n:长
+		var f func(int, int)
+		f = func(i, j int) {
 			c := byte('0')
 			for _, di := range d {
-				x, y := i + di[0], j + di[1]
-				if 0 <= x && x < m && 0 <= y && y < n && board[x][y] == 'M' {	// 四面八方8个位置是否有雷
-					c++								// 周围地雷数目
+				x, y := i+di[0], j+di[1]
+				if 0 <= x && x < m && 0 <= y && y < n && board[x][y] == 'M' { // 四面八方8个位置是否有雷
+					c++ // 周围地雷数目
 				}
 			}
 			if c > '0' {
-				board[i][j] = c			// 这个位置周围地雷的数量
+				board[i][j] = c // 这个位置周围地雷的数量
 			} else {
 				board[i][j] = 'B'
 				for _, di := range d {
-					x, y := i + di[0], j + di[1]
-					if 0 <= x && x < m && 0 <= y && y < n && board[x][y] == 'E' {	// 附近没有雷 默认就是E
+					x, y := i+di[0], j+di[1]
+					if 0 <= x && x < m && 0 <= y && y < n && board[x][y] == 'E' { // 附近没有雷 默认就是E
 						f(x, y)
 					}
 				}

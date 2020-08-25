@@ -15,8 +15,8 @@ func main() {
 func xor(start, n int) int {
 	nums := start
 	for i := 1; i < n; i++ {
-		num := start+i*2
-		nums = nums^num
+		num := start + i*2
+		nums = nums ^ num
 	}
 	return nums
 }

@@ -15,6 +15,7 @@ func main() {
 	t := time.Since(st)
 	fmt.Println(ret, t)
 }
+
 /**
  * Definition for singly-linked list.
  * type ListNode struct {

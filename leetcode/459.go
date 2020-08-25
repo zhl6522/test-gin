@@ -22,7 +22,7 @@ func repeatedSubstringPattern(s string) bool {
 			for j := i; j < n; j++ {
 				if s[j] != s[j-i] {
 					match = false
-					break;
+					break
 				}
 			}
 			if match {

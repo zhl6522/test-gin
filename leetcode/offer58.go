@@ -15,5 +15,5 @@ func main() {
 func leftwords(s string, n int) string {
 	s1 := s[:n]
 	s2 := s[n:]
-	return s2+s1
+	return s2 + s1
 }

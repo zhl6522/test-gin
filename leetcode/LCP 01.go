@@ -16,20 +16,19 @@ import (
 */
 func main() {
 	st := time.Now()
-	guess := []int{2,2,3}
-	answer := []int{3,2,1}
+	guess := []int{2, 2, 3}
+	answer := []int{3, 2, 1}
 	ret := game(answer, guess)
 	t := time.Since(st)
 	fmt.Println(ret, t)
 }
 
-func game(answer,guess []int) int {
-	i:=0
-	for k,v := range answer {
+func game(answer, guess []int) int {
+	i := 0
+	for k, v := range answer {
 		if v == guess[k] {
 			i++
 		}
 	}
 	return i
 }
-
