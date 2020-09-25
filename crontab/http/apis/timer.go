@@ -39,6 +39,7 @@ func HandleTimer(w http.ResponseWriter, r *http.Request){
     timeStr,_ := params["delay"].(string)
     requestUrl,_ := params["request_url"].(string)
     requestParams,_ := json.Marshal(params["request_params"])
+	//携程
     go exec(timeStr,requestUrl,string(requestParams))
 	w.Write([]byte("任务已加载..."))
 }
