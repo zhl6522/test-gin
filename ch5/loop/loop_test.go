@@ -1,4 +1,4 @@
-package loop__test
+package loop_test
 
 import "testing"
 

@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/my/repo/test-gin/test-file/controller"
 	"log"
 	"net/http"
-	"test-gin/test-file/controller"
 	//"golang.org/x/autotls"
 	//"golang.org/x/crypto/acme/autocert"
 )
@@ -65,7 +65,7 @@ func main() {
 		}
 	})
 
-	r.LoadHTMLGlob("./templates/**/*")
+	r.LoadHTMLGlob("./test-file/templates/**/*")
 
 	//返回第三方获取的数据 文件会下载
 	r.GET("/someDataFromReader", func(c *gin.Context) {

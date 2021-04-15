@@ -3,9 +3,9 @@ package controller
 import (
 	"fmt"
 	"github.com/gin-gonic/gin"
+	"github.com/my/repo/test-gin/test-file/model"
 	"log"
 	"net/http"
-	"test-gin/test-file/model"
 )
 
 // 绑定JSON的示例 ({"user": "zhl", "password": "123456"})

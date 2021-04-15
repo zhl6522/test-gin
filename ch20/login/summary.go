@@ -2,6 +2,7 @@ package main
 
 import (
 	"github.com/gin-gonic/gin"
+	"github.com/gin-gonic/gin/testdata/protoexample"
 	"net/http"
 )
 
@@ -30,11 +31,11 @@ func main() {
 	})
 	// 3、XML	天气预报抓取转义
 	r.GET("/someXML", func(c *gin.Context) {
-		c.XML(http.StatusOK, gin.H{"message":"ok"})
+		//c.XML(http.StatusOK, gin.H{"message":"ok"})
 		// 4、YAML响应	作为配置文件
-		//c.YAML(http.StatusOK, gin.H{"name":"zhl"})
+		c.YAML(http.StatusOK, gin.H{"name":"zhl"})
 		// 5、protobuf格式，谷歌开发的高效存储读取工具	作为传输数据
-		/*reps := []int64{int64(1), int64(2)}
+		reps := []int64{int64(1), int64(2)}
 		// 定义数据
 		label := "label"
 		// 传protobuf格式数据
@@ -42,7 +43,7 @@ func main() {
 			Label:&label,
 			Reps:reps,
 		}
-		c.ProtoBuf(http.StatusOK, data)*/
+		c.ProtoBuf(http.StatusOK, data)
 	})
 
 
