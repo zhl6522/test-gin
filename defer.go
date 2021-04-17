@@ -25,8 +25,3 @@ func main() {
 	res := sum(10, 20)
 	fmt.Println("res=", res)	//res=32
 }
-
-func TestTime() {
-	times := fmt.Sprintf("%v-%v-%v %v:%v:%v",time.Now().Year(),int(time.Now().Month()),time.Now().Day(),time.Now().Hour(),time.Now().Minute(), time.Now().Second())
-	fmt.Println(times)
-}
