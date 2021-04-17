@@ -1,6 +1,9 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"time"
+)
 
 func sum(n1, n2 int) int {
 	//当执行到defer时，暂不执行，会将defer后面的语句压入到独立的栈(defer栈)
@@ -21,4 +24,9 @@ func sum(n1, n2 int) int {
 func main() {
 	res := sum(10, 20)
 	fmt.Println("res=", res)	//res=32
+}
+
+func TestTime() {
+	times := fmt.Sprintf("%v-%v-%v %v:%v:%v",time.Now().Year(),int(time.Now().Month()),time.Now().Day(),time.Now().Hour(),time.Now().Minute(), time.Now().Second())
+	fmt.Println(times)
 }
