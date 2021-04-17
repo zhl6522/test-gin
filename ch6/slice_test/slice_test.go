@@ -29,7 +29,7 @@ func TestSliceGrowing(t *testing.T) {
 	s2 := []int{}
 	for i:=0;i<10;i++ {
 		s2 = append(s2, i)
-		t.Log(len(s2), cap(s2))
+		t.Log(len(s2), cap(s2), s2)
 	}
 }
 

@@ -18,7 +18,7 @@ func TestString(t *testing.T) {
 	t.Log(len(s))	//是byte数
 
 	c:=[]rune(s)	//rune代表着Unicode
-	t.Log(len(c))
+	t.Log(len(c))	//此处不是byte数
 	//t.Log("run size:", unsafe.Sizeof(c[0]))
 	t.Logf("中 Unicode %x", c[0])
 	t.Logf("中 UTF8 %x", s)

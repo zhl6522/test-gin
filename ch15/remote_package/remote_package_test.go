@@ -1,7 +1,7 @@
 package remote
 
 import (
-	cm "github.com/easierway/concurrent_map"
+	cm "github.com/my/repo/github.com/easierway/concurrent_map"
 	"testing"
 )
 

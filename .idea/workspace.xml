@@ -1,0 +1,189 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="1c20feab-af40-4a83-a60c-5aa61c4f66ac" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/crontab/go.mod" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crontab/http/apis/timer.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crontab/http/client/request.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crontab/http/server/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crontab/http/server/router.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crontab/http/utils/global_functions.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/crontab/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/.idea/leetcode.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/1266.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/1290.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/1295.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/1342.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/1365.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/1389.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/459.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/leetcode/491.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/111219155508-3.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/111219155508-5.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/14904477977261.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/1490447862207.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/1490447977771.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/1490447990151.jpg" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/uploads/1490448012308.jpg" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch15/client/package_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch15/client/package_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch15/remote_package/remote_package_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch15/remote_package/remote_package_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch20/login/summary.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch20/login/summary.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch5/condition/condition_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch5/condition/condition_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch5/loop/loop_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch5/loop/loop_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch6/array_test/array_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch6/array_test/array_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch6/slice_test/slice_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch6/slice_test/slice_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch7/map_test/map_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch7/map_test/map_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch8/map/map_ext_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch8/map/map_ext_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch9/string/string_fun_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch9/string/string_fun_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ch9/string/string_test.go" beforeDir="false" afterPath="$PROJECT_DIR$/ch9/string/string_test.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/02.03.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/02.03.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/111.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/111.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/1281.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/1281.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/1431.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/1431.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/1470.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/1470.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/1480.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/1480.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/1486.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/1486.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/1512.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/1512.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/529.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/529.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/647.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/647.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/771.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/771.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/LCP 01.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/LCP 01.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/LCP 06.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/LCP 06.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/leetcode/offer58.go" beforeDir="false" afterPath="$PROJECT_DIR$/leetcode/offer58.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test-file/controller/LoginController.go" beforeDir="false" afterPath="$PROJECT_DIR$/test-file/controller/LoginController.go" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/leetcode/111.go">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="-69">
+              <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="GOROOT" path="C:\Go" />
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/leetcode/111.go" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectConfigurationFiles">
+    <option name="files">
+      <list>
+        <option value="$PROJECT_DIR$/.idea/test-gin.iml" />
+        <option value="$PROJECT_DIR$/.idea/vcs.xml" />
+        <option value="$PROJECT_DIR$/.idea/misc.xml" />
+        <option value="$PROJECT_DIR$/.idea/modules.xml" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-8" />
+    <option name="y" value="-8" />
+    <option name="width" value="1346" />
+    <option name="height" value="698" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="test-gin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test-gin" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="test-gin" type="b2602c69:ProjectViewProjectNode" />
+              <item name="test-gin" type="462c0819:PsiDirectoryNode" />
+              <item name="leetcode" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="go.gopath.indexing.explicitly.defined" value="true" />
+    <property name="go.import.settings.migrated" value="true" />
+    <property name="go.sdk.automatically.set" value="true" />
+    <property name="go.vendoring.notification.had.been.shown" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
+    <editor active="true" />
+    <layout>
+      <window_info id="Favorites" side_tool="true" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.17846154" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Database Changes" />
+      <window_info anchor="bottom" id="Version Control" />
+      <window_info anchor="bottom" id="Terminal" />
+      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" />
+      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="right" id="Database" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/leetcode/111.go">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-69">
+          <caret line="3" column="9" selection-start-line="3" selection-start-column="9" selection-end-line="3" selection-end-column="9" />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

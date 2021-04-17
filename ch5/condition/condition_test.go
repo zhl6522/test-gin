@@ -1,4 +1,4 @@
-package condition__test
+package condition_test
 
 import "testing"
 

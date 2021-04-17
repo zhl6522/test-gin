@@ -1,7 +1,7 @@
 package client
 
 import (
-	"test-gin/ch15/series"
+	"github.com/my/repo/test-gin/ch15/series"
 	"testing"
 )
 

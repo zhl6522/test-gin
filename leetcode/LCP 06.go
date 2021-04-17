@@ -6,7 +6,7 @@ import (
 )
 
 func main() {
-	c := []int{2,3,10}
+	c := []int{2, 3, 10}
 	st := time.Now()
 	str := minCount(c)
 	elapsed := time.Since(st)
@@ -16,8 +16,8 @@ func main() {
 
 func minCount(c []int) int {
 	u := 0
-	for _,v := range c{
-		u += (v+1)/2
+	for _, v := range c {
+		u += (v + 1) / 2
 	}
 	return u
 }
