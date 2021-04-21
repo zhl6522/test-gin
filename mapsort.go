@@ -40,6 +40,7 @@ func main() {
 	map2[9] = 30
 	map2[1] = 10
 	fmt.Println(map2)
+	
 	/*
 		如何按照map的key的顺序进行顺序输出
 		1、先将map的key放到切片中
