@@ -3,7 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1c20feab-af40-4a83-a60c-5aa61c4f66ac" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/factory/main/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/factory/main/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -124,7 +123,8 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="binary&amp;bubblesort&amp;exercise&amp;map&amp;typeTotype" />
     <MESSAGE value="工厂模式" />
-    <option name="LAST_COMMIT_MESSAGE" value="工厂模式" />
+    <MESSAGE value="工厂模式&amp;继承" />
+    <option name="LAST_COMMIT_MESSAGE" value="工厂模式&amp;继承" />
   </component>
   <component name="WindowStateProjectService">
     <state x="703" y="328" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1619070469945">
@@ -139,10 +139,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="668" y="168" key="#go_build_test-gin/factory/main/0.0.1920.1050@0.0.1920.1050" timestamp="1619071091772" />
-    <state x="560" y="121" key="CommitChangelistDialog2" timestamp="1619085804232">
+    <state x="560" y="121" key="CommitChangelistDialog2" timestamp="1619090234521">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="560" y="121" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1619085804232" />
+    <state x="560" y="121" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1619090234521" />
     <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1619077667686">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
@@ -163,10 +163,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1619071137386" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1619085814656">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1619090240982">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1619085814656" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1619090240982" />
     <state x="685" y="316" key="git4idea.merge.GitPullDialog" timestamp="1619085865121">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
