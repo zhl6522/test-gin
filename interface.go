@@ -26,7 +26,7 @@ func (c Camera) Stop() {
 }
 //编写一个方法Working方法，接收一个Usb接口类型变量
 //只要是实现了Usb接口（所谓实现Usb接口，就是指实现了Usb接口声明的所有方法）
-func (c Computer) Working(usb Usb)  {
+func (c Computer) Working(usb Usb)  {	//usb变量既可以接收手机变量，又可以接收相机变量 这里的usb就提现了多态	多态特性是通过接口实现的
 	//通过usb接口变量来调用Start和Stop方法
 	usb.Start()
 	usb.Stop()
