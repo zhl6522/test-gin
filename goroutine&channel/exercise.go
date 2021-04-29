@@ -20,8 +20,8 @@ func main() {
 	<-allChan
 
 	first := <-allChan
-	fmt.Printf("first")
+	fmt.Printf("first 结构=%T\n", first)
 	//fmt.Println(first.Name)	//这么写类型不匹配，就会报错(first.Name undefined (type interface {} is interface with no methods))，要确保原来的空接口指向的就是断言类型。
-	fmt.Println(first.(Cat).Name)
+	fmt.Printf("Cat.Name=%v\n", first.(Cat).Name)
 	//fmt.Println(allChan)
 }
