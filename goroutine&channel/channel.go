@@ -1,6 +1,16 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"math/rand"
+	"strconv"
+)
+
+type Person struct {
+	Name    string
+	Age     int
+	Address string
+}
 
 func main() {
 
@@ -26,7 +36,7 @@ func main() {
 	fmt.Println("num2=", num2)
 	fmt.Printf("channel len=%v cap=%v\n", len(intChan), cap(intChan))
 
-	//6、在没有使用协程的情况下，如果我们的管道数据已经全部取出，再去就会报告 deadlock
+	//6、在没有使用协程的情况下，如果我们的管道数据已经全部取出，再去就取会报告 deadlock
 
 	// 注意：如果向管道里放map数据 需要make
 	/*
@@ -42,4 +52,37 @@ func main() {
 		mapChan<-m2
 	*/
 
+	//aChan := make(chan int, 3)
+	//aChan <- 1
+	//aChan <- 2
+	//close(aChan) //close
+	////这时不能在写入数到channel中
+	////aChan<-3	//panic: send on closed channel
+	////当管道关闭后，读取数据还是可以的
+	//n1 := <-aChan
+	//fmt.Println("当管道关闭后，读取数据 ", n1)
+
+	allChan := make(chan interface{}, 10)
+	for i := 0; i < 10; i++ {
+		stru := Person{
+			Name:    fmt.Sprintf("zhl%v", strconv.Itoa(i)),
+			Age:     rand.Intn(30),
+			Address: fmt.Sprintf("北京市%v号", rand.Intn(100)),
+		}
+		allChan <- stru
+		//fis := <-allChan
+		//fmt.Printf("Person地址的值： 姓名=%v 年龄=%v 地址=%v\n", fis.(Person).Name,fis.(Person).Age,fis.(Person).Address)
+
+	}
+	/*
+	遍历管道不能使用普通的for循环
+	for i := 0; i < len(allChan); i++ {
+
+	}*/
+	close(allChan)
+	//在遍历时，如果channel没有关闭，则会出现deadlick的错误。
+	//在遍历时，如果channel已经关闭，则会正常遍历数据，遍历完成后，就会退出遍历。
+	for v := range allChan {	//管道(队列)没有下标，所以只有一个值
+		fmt.Printf("Person地址的值： 姓名=%v 年龄=%v 地址=%v\n", v.(Person).Name,v.(Person).Age,v.(Person).Address)
+	}
 }
