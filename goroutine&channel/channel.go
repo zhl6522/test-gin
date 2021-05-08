@@ -36,7 +36,7 @@ func main() {
 	fmt.Println("num2=", num2)
 	fmt.Printf("channel len=%v cap=%v\n", len(intChan), cap(intChan))
 
-	//6、在没有使用协程的情况下，如果我们的管道数据已经全部取出，再去就取会报告 deadlock
+	//6、在没有使用协程的情况下，如果我们的管道数据已经全部取出，再去取就会报告 deadlock
 
 	// 注意：如果向管道里放map数据 需要make
 	/*

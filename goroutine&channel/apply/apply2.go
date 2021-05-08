@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"time"
 )
-
+//求80000以内的素数
 func writeData(putChan chan int) {
 	for i := 1; i < 80000; i++ {
 		putChan <- i
@@ -51,8 +51,8 @@ func main() {
 	chan2 = make(chan int, 3)*/
 	//var chan3 <-chan int	//声明为只读
 
-	putChan := make(chan int, 20000)
 	exitChan := make(chan bool, 4)
+	putChan := make(chan int, 20000)
 	primeChan := make(chan int, 20000)
 	start := time.Now().UnixNano()
 	go writeData(putChan)
@@ -62,7 +62,7 @@ func main() {
 	//这里我们主线程，进行处理
 	go func() { //起一个协程去处理（匿名函数）避免阻塞在那里
 		for i := 0; i < 4; i++ {	//由于当前电脑4核开四个协程基本就实现了最大化，开多了也没多大变化
-			<-exitChan //这类取不到就会一直等待
+			<-exitChan //这里取不到就会一直等待
 		}
 		end := time.Now().UnixNano()
 		fmt.Println("使用协程耗时=", end-start)	//协程是普通方法速度的两倍（协程数） 参考文件：apply2.test.go
