@@ -2,13 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c20feab-af40-4a83-a60c-5aa61c4f66ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/main/processor.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/process/smsProcess.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/process/userProcess.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/utils/utils.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/main/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/server.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/smsProcess.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/userProcess.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/utils/utils.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client.exe" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/main/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/process/userProcess.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/process/userProcess.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/海量用户即时通讯系统-思路2-程序架构图.png" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -25,9 +28,6 @@
   <component name="GOROOT" path="C:\Go" />
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
-  </component>
-  <component name="GoLibraries">
-    <option name="indexEntireGoPath" value="false" />
   </component>
   <component name="ProjectId" id="1sBbwhhWsqQwFmyWloR1NSHIRDa" />
   <component name="ProjectLevelVcsManager">
@@ -51,17 +51,18 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/main" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/utils" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\client\utils" />
+      <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\client\main" />
       <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\server\main" />
       <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\client" />
       <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\redis" />
-      <recent name="E:\www\go_project\src\test-gin\goroutine&amp;channel\apply" />
     </key>
   </component>
   <component name="RunManager" selected="Go Build.go build test-gin/goroutine&amp;channel">
@@ -143,10 +144,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="560" y="121" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1620465425390" />
-    <state x="461" y="167" key="SettingsEditor" timestamp="1620874394408">
+    <state x="461" y="167" key="SettingsEditor" timestamp="1620981176517">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1620874394408" />
+    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1620981176517" />
     <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1620465433399">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>

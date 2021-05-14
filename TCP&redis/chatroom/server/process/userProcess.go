@@ -10,7 +10,6 @@ import (
 
 type UserProcess struct {
 	Conn net.Conn
-
 }
 
 //serverProcessLogin函数：处理登录请求
