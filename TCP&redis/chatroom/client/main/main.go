@@ -9,7 +9,13 @@ import (
 //定义两个变量，一个表示用户id，一个表示用户密码
 var userId int
 var userPwd string
+var userName string
 
+/*
+Administrator@MS-20170306-zhl MINGW64 /e/www/go_project/src/test-gin/TCP&redis/chatroom (master)
+$ go build -o client.exe client/main/main.go
+$ ./client.exe
+*/
 func main() {
 	//接收用户的选择
 	var key int
@@ -27,23 +33,35 @@ func main() {
 		switch key {
 		case 1:
 			fmt.Println("登陆聊天室")
-			fmt.Println("请输入用户的id")
+			fmt.Println("请输入用户的id:")
 			fmt.Scanf("%d\n", &userId)
-			fmt.Println("请输入用户的密码")
+			fmt.Println("请输入用户的密码:")
 			fmt.Scanf("%s\n", &userPwd)
 			//完成登录
 			//1、创建一个UserProcess的实例
 			up := &process.UserProcess{}
 			err := up.Login(userId, userPwd)
 			if err != nil {
-			 fmt.Printf("UserProcess login err=%v\n",err)
-			 return
+				fmt.Printf("UserProcess login err=%v\n", err)
+				return
 			}
 
 			//loop = false
 		case 2:
 			fmt.Println("注册用户")
-			loop = false
+			fmt.Println("请输入用户的id:")
+			fmt.Scanf("%d\n", &userId)
+			fmt.Println("请输入用户的密码:")
+			fmt.Scanf("%s\n", &userPwd)
+			fmt.Println("请输入用户的昵称:")
+			fmt.Scanf("%s\n", &userName)
+			up := &process.UserProcess{}
+			err := up.Register(userId, userPwd, userName)
+			if err != nil {
+				fmt.Printf("UserProcess login err=%v\n", err)
+				return
+			}
+			//loop = false
 		case 3:
 			os.Exit(0)
 			//fmt.Println("退出系统")
