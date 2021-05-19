@@ -11,7 +11,37 @@ import (
 )
 
 type UserProcess struct {
+}
 
+//客户端退出
+func (this *UserProcess) Logout(userId int) {
+	var mes message.Message
+	mes.Type = message.LogutMesType
+	var logoutmes message.LogutMes
+	logoutmes.UserId = userId
+	data, err := json.Marshal(logoutmes)
+	if err != nil {
+		fmt.Printf("json.Marshal err=%v\n", err)
+		return
+	}
+	//5、把data赋给mes.Data字段
+	mes.Data = string(data)
+	//6、将mes进行序列化
+	data, err = json.Marshal(mes)
+	if err != nil {
+		fmt.Printf("json.Marshal err=%v\n", err)
+		return
+	}
+	//创建一个Transfer实例
+	tf := &utils.Transfer{
+		Conn: curUser.Conn,
+	}
+	//发送数据给服务端
+	err = tf.WritePkg(data)
+	if err != nil {
+		fmt.Printf("退出发送信息错误：conn.WritePkg(data) err=%v\n", err)
+		return
+	}
 }
 
 func (this *UserProcess) Register(userId int, userPwd, userName string) (err error) {
@@ -56,7 +86,7 @@ func (this *UserProcess) Register(userId int, userPwd, userName string) (err err
 		fmt.Printf("注册发送信息错误：conn.WritePkg(data) err=%v\n", err)
 		return
 	}
-	mes, err = tf.ReadPkg()	//mes就是RegisterResMes
+	mes, err = tf.ReadPkg() //mes就是RegisterResMes
 	if err != nil {
 		fmt.Printf("readPkg() err=%v\n", err)
 		return
@@ -120,7 +150,7 @@ func (this *UserProcess) Login(userId int, userPwd string) (err error) {
 	var pkgLen uint32
 	pkgLen = uint32(len(data))
 	var buf [4]byte
-	binary.BigEndian.PutUint32(buf[0:4], pkgLen)
+	binary.BigEndian.PutUint32(buf[0:4], pkgLen) //pkgLen赋给buf切片
 	//发送长度
 	n, err := conn.Write(buf[:4])
 	if n != 4 || err != nil {
@@ -156,15 +186,27 @@ func (this *UserProcess) Login(userId int, userPwd string) (err error) {
 		return
 	}
 	if loginResMes.Code == 200 {
+		//初始化curUser
+		curUser.Conn = conn
+		curUser.UserId = userId
+		curUser.UserStatus = message.UserOnline
+
 		//fmt.Println("登录成功")
 		//显示当前在线用户列表，遍历loginResMes.UsersId
-		fmt.Println("当前在线呢用户列表如下：")
+		fmt.Println("当前在线用户列表如下：")
 		for _, value := range loginResMes.UsersId {
 			//如果要求不显示自己在线
 			if value == userId {
 				continue
 			}
 			fmt.Println("用户id:\t", value)
+			//完成客户端onlineUsersMap的初始化
+			user := &message.User{
+				UserId: value,
+				//UserName:   "",
+				UserStatus: message.UserOnline,
+			}
+			onlineUsersMap[value] = user
 		}
 		fmt.Print("\n\n")
 		//这里我们还需要在客户端启动一个协程，该协程保持和服务器端的通讯，如果服务器有数据推送给客户端，则接收并显示在客户端的终端。
@@ -172,7 +214,7 @@ func (this *UserProcess) Login(userId int, userPwd string) (err error) {
 
 		//1、显示我们登录成功的菜单...[这里循环也可以外面client/main.go循环]
 		for true {
-			showMenu()
+			showMenu(userId)
 		}
 	} else {
 		fmt.Println(loginResMes.Error)
