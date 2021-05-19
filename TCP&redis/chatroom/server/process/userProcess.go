@@ -17,45 +17,49 @@ type UserProcess struct {
 
 //这里我们通知所有在线用户的方法
 //userId通知其他在线用户，他上线了
-func (this *UserProcess) NotifyOtherOnlineUser(userId int) {
+func (this *UserProcess) NotifyOtherOnlineUser(userId int, status int) {
 	//遍历UserMgr.onlineUsers，然后一个一个发送NotifyUserStatusMes消息
 	for id, up := range userMgr.onlineUsers {
 		if id == userId {
 			continue
 		}
 		//开始通知
-		up.NotifyMeOnline(userId)
+		up.NotifyMeOnline(userId, status)
 	}
 }
 
-func (this *UserProcess) NotifyMeOnline(userId int)  {
+func (this *UserProcess) NotifyMeOnline(userId int, status int) {
 	//组装NotifyUserStatusMes消息
 	var mes message.Message
 	mes.Type = message.NotifyUserStatusMesType
 
 	var notifyUserStatusMes message.NotifyUserStatusMes
 	notifyUserStatusMes.UserId = userId
-	notifyUserStatusMes.Status = message.UserOnline
+	if status == message.UserOnline {
+		notifyUserStatusMes.Status = message.UserOnline
+	} else if status == message.UserOffline {
+		notifyUserStatusMes.Status = message.UserOffline
+	}
 	data, err := json.Marshal(notifyUserStatusMes)
 	if err != nil {
-	 fmt.Printf("json.Marshal err=%v\n",err)
-	 return
+		fmt.Printf("json.Marshal err=%v\n", err)
+		return
 	}
 	mes.Data = string(data)
 	data, err = json.Marshal(mes)
 	if err != nil {
-	 fmt.Printf("json.Marshal err=%v\n",err)
-	 return
+		fmt.Printf("json.Marshal err=%v\n", err)
+		return
 	}
 
 	//发送，创建Transfer实例
 	tf := &utils.Transfer{
-		Conn:this.Conn,
+		Conn: this.Conn,
 	}
 	err = tf.WritePkg(data)
 	if err != nil {
-	 fmt.Printf("NotifyMeOnline err=%v\n",err)
-	 return
+		fmt.Printf("NotifyMeOnline err=%v\n", err)
+		return
 	}
 
 }
@@ -65,55 +69,14 @@ func (this *UserProcess) ServerProcessLogout(mes *message.Message) {
 	var logoutMes message.LogutMes
 	err := json.Unmarshal([]byte(mes.Data), &logoutMes)
 	if err != nil {
-		fmt.Printf("json.Unmarshal err=%v\n",err)
+		fmt.Printf("json.Unmarshal err=%v\n", err)
 		return
 	}
 	userMgr.DelOnlineUser(logoutMes.UserId)
 
-	this.NotifyOtherOfflineUser(logoutMes.UserId)
+	var offline = 1
+	this.NotifyOtherOnlineUser(logoutMes.UserId, offline)
 	fmt.Println(logoutMes.UserId, "退出成功")
-}
-
-func (this *UserProcess) NotifyOtherOfflineUser(userId int) {
-	//遍历UserMgr.onlineUsers，然后一个一个发送NotifyUserStatusMes消息
-	for id, up := range userMgr.onlineUsers {
-		if id == userId {
-			continue
-		}
-		//开始通知
-		up.NotifyMeOffline(userId)
-	}
-}
-
-func (this *UserProcess) NotifyMeOffline(userId int)  {
-	//组装NotifyUserStatusMes消息
-	var mes message.Message
-	mes.Type = message.NotifyUserStatusMesType
-
-	var notifyUserStatusMes message.NotifyUserStatusMes
-	notifyUserStatusMes.UserId = userId
-	notifyUserStatusMes.Status = message.UserOffline
-	data, err := json.Marshal(notifyUserStatusMes)
-	if err != nil {
-		fmt.Printf("json.Marshal err=%v\n",err)
-		return
-	}
-	mes.Data = string(data)
-	data, err = json.Marshal(mes)
-	if err != nil {
-		fmt.Printf("json.Marshal err=%v\n",err)
-		return
-	}
-
-	//发送，创建Transfer实例
-	tf := &utils.Transfer{
-		Conn:this.Conn,
-	}
-	err = tf.WritePkg(data)
-	if err != nil {
-		fmt.Printf("NotifyMeOnline err=%v\n",err)
-		return
-	}
 }
 
 func (this *UserProcess) ServerProcessRegister(mes *message.Message) (err error) {
@@ -200,8 +163,9 @@ func (this *UserProcess) ServerProcessLogin(mes *message.Message) (err error) {
 		//将登录成功的userId赋给this
 		this.UserId = loginMes.UserId
 		userMgr.AddOnlineUser(this)
+		var online = 0
 		//通知其他在线用户，他上线了
-		this.NotifyOtherOnlineUser(loginMes.UserId)
+		this.NotifyOtherOnlineUser(loginMes.UserId, online)
 		//将当前用户的id放到loginResMes.UsersId中
 		//遍历userMgr.onlineUsers
 		for id, _ := range userMgr.onlineUsers {
