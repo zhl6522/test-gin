@@ -1,21 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1c20feab-af40-4a83-a60c-5aa61c4f66ac" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/model/curUser.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/smsMgr.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/userMgr.go" afterDir="false" />
+    <list default="true" id="1c20feab-af40-4a83-a60c-5aa61c4f66ac" name="Default Changelist" comment="群发处理">
+      <change afterPath="$PROJECT_DIR$/数据结构&amp;算法/queue/singlequeue.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/server.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/server.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/smsProcess.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/smsProcess.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/userProcess.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/client/process/userProcess.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/common/message/message.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/common/message/message.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/common/message/user.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/common/message/user.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server.exe" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server.exe" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/main/processor.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/main/processor.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/process/smsProcess.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/process/smsProcess.go" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/process/userProcess.go" beforeDir="false" afterPath="$PROJECT_DIR$/TCP&amp;redis/chatroom/server/process/userProcess.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/数据结构&amp;算法/sparsearray/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/数据结构&amp;算法/sparsearray/main.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -75,7 +64,7 @@
       <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\client" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build set.go">
+  <component name="RunManager" selected="Go Build.go build test-gin/数据结构&amp;算法/sparsearray">
     <configuration name="go build demo2.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="test-gin" />
       <working_directory value="$PROJECT_DIR$/" />
@@ -94,21 +83,21 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build demo.go (1)" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="test-gin" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/reflect/demo.go" />
-      <package value="test-gin" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
     <configuration name="go build set.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="test-gin" />
       <working_directory value="$PROJECT_DIR$/" />
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/TCP&amp;redis/redis/set.go" />
       <package value="test-gin" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build test-gin/数据结构&amp;算法/sparsearray" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="test-gin" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/数据结构&amp;算法/sparsearray/main.go" />
+      <package value="test-gin/数据结构&amp;算法/sparsearray" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
@@ -123,11 +112,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build test-gin/数据结构&amp;算法/sparsearray" />
         <item itemvalue="Go Build.go build set.go" />
         <item itemvalue="Go Build.go build test-gin/goroutine&amp;channel" />
         <item itemvalue="Go Build.go build demo3.go" />
         <item itemvalue="Go Build.go build demo2.go" />
-        <item itemvalue="Go Build.go build demo.go (1)" />
       </list>
     </recent_temporary>
   </component>
@@ -139,7 +128,10 @@
     <option name="CHECK_NEW_TODO" value="false" />
     <MESSAGE value="管道和协程" />
     <MESSAGE value="socket" />
-    <option name="LAST_COMMIT_MESSAGE" value="socket" />
+    <MESSAGE value="账号登录(上线提醒)、注册、群聊、退出" />
+    <MESSAGE value="账号退出优化" />
+    <MESSAGE value="群发处理" />
+    <option name="LAST_COMMIT_MESSAGE" value="群发处理" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
@@ -150,22 +142,26 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="668" y="159" key="#go_build_test-gin/goroutine&amp;channel/0.0.1920.1050@0.0.1920.1050" timestamp="1620349797821" />
-    <state x="560" y="121" key="CommitChangelistDialog2" timestamp="1620465425390">
+    <state x="668" y="168" key="#go_build_test-gin/数据结构&amp;算法/sparsearray" timestamp="1621414208870">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="560" y="121" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1620465425390" />
+    <state x="668" y="168" key="#go_build_test-gin/数据结构&amp;算法/sparsearray/0.0.1920.1050@0.0.1920.1050" timestamp="1621414208870" />
+    <state x="560" y="121" key="CommitChangelistDialog2" timestamp="1621412125322">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="560" y="121" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1621412125322" />
     <state x="461" y="167" key="SettingsEditor" timestamp="1620981176517">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1620981176517" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1620465433399">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1621412130088">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1620465433399" />
-    <state x="636" y="258" width="649" height="534" key="find.popup" timestamp="1620462048188">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1621412130088" />
+    <state x="636" y="258" width="649" height="534" key="find.popup" timestamp="1621417603953">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="636" y="258" width="649" height="534" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1620462048188" />
+    <state x="636" y="258" width="649" height="534" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1621417603953" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1621327924145">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
