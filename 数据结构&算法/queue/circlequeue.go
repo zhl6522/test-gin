@@ -1,6 +1,7 @@
 package main
 
 import (
+	"errors"
 	"fmt"
 	"os"
 )
@@ -8,31 +9,73 @@ import (
 //使用一个结构体管理环形队列
 type CircleQueue struct {
 	maxSize int    //4
-	array   [4]int //数组
-	head    int    //指向队列的队首
-	tail    int    //指向队列的队尾
+	array   [5]int //数组
+	head    int    //指向队列的队首	0
+	tail    int    //指向队列的队尾	0
 }
 
 //入队列	AddQueue(push)	GetQueue(pop)
 func (this *CircleQueue) Push(val int) (err error) {
-	return nil
+	if this.IsFull() {
+		return errors.New("queue full")
+	}
+	//分析出this.tail在队列尾部，但是不包含最后发热元素
+	this.array[this.tail] = val //把值给尾部
+	this.tail = (this.tail + 1) % this.maxSize
+	return
 }
 
+//出队列
 func (this *CircleQueue) Pop() (val int, err error) {
-	return val,nil
+	if this.IsEmpty() {
+		return 0, errors.New("queue empty")
+	}
+	//取出，head是指向队首，并且含队首元素
+	val = this.array[this.head]
+	this.head = (this.head + 1) % this.maxSize
+	return val, nil
 }
-//判断环形队列是否为空
+
+//显示队列
+func (this *CircleQueue) ListQueue() {
+	fmt.Println("环形队列情况如下：")
+	//取出当前队列有多少元素
+	size := this.Size()
+	if size == 0 {
+		fmt.Println("队列为空")
+	}
+
+	//设计一个辅助变量，指向head
+	tempHeader := this.head
+	for i := 0; i < size; i++ {
+		fmt.Printf("array[%d]=%d\t", tempHeader, this.array[tempHeader])
+		tempHeader = (tempHeader + 1) % this.maxSize
+	}
+	fmt.Println()
+}
+
+//判断环形队列是否满了
 func (this *CircleQueue) IsFull() bool {
 	return (this.tail+1)%this.maxSize == this.head
 }
-//判断环形队列是否满了
 
+//判断环形队列是否为空
+func (this *CircleQueue) IsEmpty() bool {
+	return this.tail == this.head
+}
+
+//取出环形队列有多少个元素
+func (this *CircleQueue) Size() int {
+	//这是一个关键算法
+	return (this.tail + this.maxSize - this.head) % this.maxSize
+}
 
 func main() {
+	//初始化一个环形队列
 	circle := &CircleQueue{
-		maxSize: 4,
-		head:    -1,
-		tail:    -1,
+		maxSize: 5,
+		head:    0,
+		tail:    0,
 	}
 
 	var key string
@@ -45,27 +88,28 @@ func main() {
 		fmt.Scanln(&key)
 		switch key {
 		case "add":
-			//fmt.Println("输入你要入队列数")
-			//fmt.Scanln(&val)
-			//err := queue.AddQueue(val)
-			//if err != nil {
-			//	fmt.Println(err.Error())
-			//	return
-			//} else {
-			//	fmt.Println("加入队列成功！")
-			//}
+			fmt.Println("输入你要入队列数")
+			fmt.Scanln(&val)
+			err := circle.Push(val)
+			if err != nil {
+				fmt.Println(err.Error())
+				//return
+			} else {
+				fmt.Println("加入队列成功！")
+			}
 		case "get":
-			//val, err := queue.GetQueue()
-			//if err != nil {
-			//	fmt.Printf("queue.GetQueue() err=%v\n", err)
-			//	return
-			//}
-			//fmt.Println("从队列中取出的数据：", val)
+			val, err := circle.Pop()
+			if err != nil {
+				fmt.Printf("circle.Pop() err=%v\n", err)
+				//return
+			}
+			fmt.Println("从队列中取出的数据：", val)
 		case "show":
-			//queue.ShowQueue()
+			circle.ListQueue()
 		case "exit":
 			os.Exit(0)
 		default:
 			fmt.Println("输入错误，请重新输入")
 		}
 	}
+}
