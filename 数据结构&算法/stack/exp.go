@@ -108,8 +108,10 @@ func main() {
 	keepNum := ""
 	for true {
 		//这里我们需要增加一个逻辑，处理多位数的问题
-		ch := exp[index : index+1]  //扫描出来的是一个字符串： ch ==> "+" ===> 43（ASCII）
-		temp := int([]byte(ch)[0])  //这个就是字符对应的ASCII值
+		ch := exp[index : index+1] //扫描出来的是一个字符串： ch ==> "+" ===> 43（ASCII）
+		temp := int([]byte(ch)[0]) //这个就是字符对应的ASCII值
+		//val, _ := strconv.ParseInt(ch, 10, 64)
+		//fmt.Printf("[]byte() = %v val(%T) = %v\n", []byte(ch), val, val)
 		if operStack.IsOper(temp) { //符号
 			//如果operStack是一个空栈，直接入栈
 			if operStack.Top == -1 {
@@ -132,7 +134,7 @@ func main() {
 		} else { //数
 
 			//错误的写法
-			//val, _ := strconv.ParseInt(ch, 10, 64)
+			//val, _ := strconv.ParseInt(ch, 10, 64) //strconv.ParseInt 是将字符串转换为数字的函数
 			//_ = numStack.Push(int(val))
 			//_ = numStack.Push(temp)	//3 ==> 51(ASCII)[错的]
 
@@ -145,7 +147,7 @@ func main() {
 				_ = numStack.Push(int(val))
 			} else {
 				//向index后面测试看看是不是运算符 [index]
-				if operStack.IsOper(int([]byte(exp[index+1:index+2])[0])) {
+				if operStack.IsOper(int([]byte(exp[index+1 : index+2])[0])) {
 					val, _ := strconv.ParseInt(keepNum, 10, 64)
 					_ = numStack.Push(int(val))
 					keepNum = ""
