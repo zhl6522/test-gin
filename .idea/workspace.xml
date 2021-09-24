@@ -2,9 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c20feab-af40-4a83-a60c-5aa61c4f66ac" name="Default Changelist" comment="群发处理">
-      <change afterPath="$PROJECT_DIR$/数据结构&amp;算法/queue/singlequeue.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/login&amp;register/main.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/数据结构&amp;算法/sparsearray/main.go" beforeDir="false" afterPath="$PROJECT_DIR$/数据结构&amp;算法/sparsearray/main.go" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/数据结构&amp;算法/recursion/demo.go" beforeDir="false" afterPath="$PROJECT_DIR$/数据结构&amp;算法/recursion/demo.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -50,45 +50,39 @@
     <property name="go.sdk.automatically.set" value="true" />
     <property name="go.tried.to.enable.integration.vgo.integrator" value="true" />
     <property name="go.vendoring.notification.had.been.shown" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/TCP&amp;redis/chatroom/common/message" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/数据结构&amp;算法/linked_list" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
-    <property name="settings.editor.selected.configurable" value="go.vgo" />
+    <property name="settings.editor.selected.configurable" value="com.goide.configuration.GoLibrariesConfigurableProvider" />
   </component>
   <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="E:\www\go_project\src\test-gin\login&amp;register\errnum" />
+    </key>
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="E:\www\go_project\src\test-gin\数据结构&amp;算法\linked_list" />
       <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\common\message" />
       <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\client\utils" />
       <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\client\main" />
       <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\server\main" />
-      <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\client" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build test-gin/数据结构&amp;算法/sparsearray">
-    <configuration name="go build demo2.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="test-gin" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/reflect/demo2.go" />
-      <package value="test-gin" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build demo3.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="test-gin" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/reflect/demo3.go" />
-      <package value="test-gin" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Go Build.go build test-gin/login&amp;register">
     <configuration name="go build set.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="test-gin" />
       <working_directory value="$PROJECT_DIR$/" />
       <kind value="FILE" />
       <filePath value="$PROJECT_DIR$/TCP&amp;redis/redis/set.go" />
       <package value="test-gin" />
+      <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="go build test-gin/数据结构&amp;算法/recursion" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+      <module name="test-gin" />
+      <working_directory value="$PROJECT_DIR$/" />
+      <kind value="PACKAGE" />
+      <filePath value="$PROJECT_DIR$/数据结构&amp;算法/recursion/demo.go" />
+      <package value="test-gin/数据结构&amp;算法/recursion" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
@@ -101,22 +95,33 @@
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build test-gin/goroutine&amp;channel" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="go build test-gin/login&amp;register" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="test-gin" />
       <working_directory value="$PROJECT_DIR$/" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/goroutine&amp;channel/exercise.go" />
-      <package value="test-gin/goroutine&amp;channel" />
+      <filePath value="$PROJECT_DIR$/login&amp;register/main.go" />
+      <package value="test-gin/login&amp;register" />
       <directory value="$PROJECT_DIR$/" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestFun in test-gin/ch11/customer_type" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="test-gin" />
+      <working_directory value="$PROJECT_DIR$/ch11/customer_type" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="test-gin/ch11/customer_type" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestFun$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Go Build.go build test-gin/login&amp;register" />
+        <item itemvalue="Go Build.go build test-gin/数据结构&amp;算法/recursion" />
+        <item itemvalue="Go Test.TestFun in test-gin/ch11/customer_type" />
         <item itemvalue="Go Build.go build test-gin/数据结构&amp;算法/sparsearray" />
         <item itemvalue="Go Build.go build set.go" />
-        <item itemvalue="Go Build.go build test-gin/goroutine&amp;channel" />
-        <item itemvalue="Go Build.go build demo3.go" />
-        <item itemvalue="Go Build.go build demo2.go" />
       </list>
     </recent_temporary>
   </component>
@@ -131,40 +136,51 @@
     <MESSAGE value="账号登录(上线提醒)、注册、群聊、退出" />
     <MESSAGE value="账号退出优化" />
     <MESSAGE value="群发处理" />
-    <option name="LAST_COMMIT_MESSAGE" value="群发处理" />
+    <MESSAGE value="算法" />
+    <MESSAGE value="go的运算方式" />
+    <MESSAGE value="选择排序、插入排序、快速排序&amp;递归" />
+    <option name="LAST_COMMIT_MESSAGE" value="选择排序、插入排序、快速排序&amp;递归" />
   </component>
   <component name="VgoProject">
     <integration-enabled>true</integration-enabled>
     <proxy>https://goproxy.cn,direct</proxy>
   </component>
   <component name="WindowStateProjectService">
-    <state x="668" y="159" key="#go_build_test-gin/goroutine&amp;channel" timestamp="1620349797821">
+    <state x="668" y="145" key="#TestFun_in_test-gin/ch11/customer_type" timestamp="1625451010227">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="668" y="159" key="#go_build_test-gin/goroutine&amp;channel/0.0.1920.1050@0.0.1920.1050" timestamp="1620349797821" />
-    <state x="668" y="168" key="#go_build_test-gin/数据结构&amp;算法/sparsearray" timestamp="1621414208870">
+    <state x="668" y="145" key="#TestFun_in_test-gin/ch11/customer_type/0.0.1920.1050@0.0.1920.1050" timestamp="1625451010227" />
+    <state x="699" y="328" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1625647899899">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="668" y="168" key="#go_build_test-gin/数据结构&amp;算法/sparsearray/0.0.1920.1050@0.0.1920.1050" timestamp="1621414208870" />
-    <state x="560" y="121" key="CommitChangelistDialog2" timestamp="1621412125322">
+    <state x="699" y="328" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1920.1050@0.0.1920.1050" timestamp="1625647899899" />
+    <state x="668" y="168" key="#go_build_test-gin/login&amp;register" timestamp="1632450629426">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="560" y="121" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1621412125322" />
-    <state x="461" y="167" key="SettingsEditor" timestamp="1620981176517">
+    <state x="668" y="168" key="#go_build_test-gin/login&amp;register/0.0.1920.1050@0.0.1920.1050" timestamp="1632450629426" />
+    <state x="668" y="168" key="#go_build_test-gin/数据结构&amp;算法/recursion" timestamp="1627269017667">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1620981176517" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1621412130088">
+    <state x="668" y="168" key="#go_build_test-gin/数据结构&amp;算法/recursion/0.0.1920.1050@0.0.1920.1050" timestamp="1627269017667" />
+    <state x="560" y="121" key="CommitChangelistDialog2" timestamp="1626076389183">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1621412130088" />
-    <state x="636" y="258" width="649" height="534" key="find.popup" timestamp="1621417603953">
+    <state x="560" y="121" key="CommitChangelistDialog2/0.0.1920.1050@0.0.1920.1050" timestamp="1626076389183" />
+    <state x="461" y="167" key="SettingsEditor" timestamp="1632463920944">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="636" y="258" width="649" height="534" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1621417603953" />
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1621327924145">
+    <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1632463920944" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1626076530921">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1621327924145" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1626076530921" />
+    <state x="944" y="202" width="649" height="534" key="find.popup" timestamp="1632464905310">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="944" y="202" width="649" height="534" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1632464905310" />
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1625650496971">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state x="623" y="227" width="672" height="678" key="search.everywhere.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1625650496971" />
   </component>
 </project>
