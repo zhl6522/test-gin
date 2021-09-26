@@ -107,7 +107,7 @@ func loginHandler(w http.ResponseWriter, r *http.Request) {
 	//fmt.Printf("%v\n", []byte(jsonStr))
 	err = json.Unmarshal(b, userInfo)
 	if err != nil {
-		fmt.Printf("解析参数时出错：%v\n", err.Error()) // 请求类型使用application/json，否则报错
+		fmt.Printf("解析参数时出错：%v\n", err.Error())
 		return
 	}
 	err = Login(userInfo)
