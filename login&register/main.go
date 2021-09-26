@@ -8,6 +8,7 @@ import (
 	"io/ioutil"
 	"net/http"
 )
+//go操作mysql：https://www.liwenzhou.com/posts/Go/go_mysql/
 
 // internal error
 type Er struct {
