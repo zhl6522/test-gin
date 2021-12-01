@@ -1,0 +1,25 @@
+如果接口的所有方法在某个类型方法集中被实现，则认为该类型实现了这个接口。
+例：
+type A struct{
+  Books int
+}
+type B interface {
+  f()
+}
+func(a A)f() {
+  fmt.println("A.f()", a.Books)
+}
+type I int
+func(i I)f() {
+ fmt.println("I.f()", i)
+}
+func main() {
+var a A=A{Books:9}
+a.f()   //A.f() 9
+var b B=A{Books:99}
+b.f()   //A.f() 99
+var i I=199
+i.f()   //I.f() 199
+var b2 B=I(299)
+b2.f()  //I.f() 299
+}
