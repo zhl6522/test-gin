@@ -1,0 +1,40 @@
+1、编写go项目代码，如果import的包报红：
+  ①go mod init [项目名]
+  ②go build拉包
+
+2、如果接口的所有方法在某个类型方法集中被实现，则认为该类型实现了这个接口。
+例：
+type A struct{
+  Books int
+}
+type B interface {
+  f()
+}
+func(a A)f() {
+  fmt.println("A.f()", a.Books)
+}
+type I int
+func(i I)f() {
+ fmt.println("I.f()", i)
+}
+func main() {
+var a A=A{Books:9}
+a.f()   //A.f() 9
+var b B=A{Books:99}
+b.f()   //A.f() 99
+var i I=199
+i.f()   //I.f() 199
+var b2 B=I(299)
+b2.f()  //I.f() 299
+}
+
+3、有缓冲的通道和无缓冲的通道只有有一个很大的不同：无缓冲的通道保证进行发送和接收的协程会在同一时间进行数据交换；有缓冲的通道没有这种保证。
+如果对通道给定一个缓冲区容量，通道就是异步的。只要通道缓冲区有未使用空间用于发送数据，或还包含可以接收的数据，那么其通信就会无阻塞地进行。
+可以通过内置的close()函数来关闭通道。
+func main() {
+  cl := make(chan int,1)
+  cl<-100
+  close(cl)
+  fmt.Println(<-cl) //通道关闭后可正常接收数据
+  cl<-100 //通道关闭后发送数据会引发panic
+}
