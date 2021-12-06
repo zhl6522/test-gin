@@ -2,8 +2,8 @@ package main
 
 import "fmt"
 
-// Go语言中函数的return不是原子操作，在底层是分为两步来执行
-// 1、返回值赋值
+// Go语言中函数的r分为两步来执行
+// 1、返回值赋值eturn不是原子操作，在底层是
 // 2、真正的RET返回
 // 函数如果存在defer，defer执行的时机在1和2之间
 func aa(i int) int {
