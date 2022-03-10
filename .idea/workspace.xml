@@ -2,10 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c20feab-af40-4a83-a60c-5aa61c4f66ac" name="Default Changelist" comment="群发处理">
-      <change afterPath="$PROJECT_DIR$/range.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reboot/cors.go" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/reboot/main.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ch16/channel/channel.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ch16/channel/channel_test.go" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/ch16/groutine/groutine2_test.go" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/range.go" beforeDir="false" afterPath="$PROJECT_DIR$/range.go" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,61 +69,67 @@
       <recent name="E:\www\go_project\src\test-gin\TCP&amp;redis\chatroom\client\main" />
     </key>
   </component>
-  <component name="RunManager" selected="Go Build.go build test-gin/login&amp;register">
-    <configuration name="go build set.go" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Go Build.go build reboot/ch16/channel">
+    <configuration name="go build reboot/ch16/channel" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
       <module name="test-gin" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <kind value="FILE" />
-      <filePath value="$PROJECT_DIR$/TCP&amp;redis/redis/set.go" />
-      <package value="test-gin" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build test-gin/数据结构&amp;算法/recursion" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="test-gin" />
-      <working_directory value="$PROJECT_DIR$/" />
+      <working_directory value="$PROJECT_DIR$" />
       <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/数据结构&amp;算法/recursion/demo.go" />
-      <package value="test-gin/数据结构&amp;算法/recursion" />
+      <filePath value="$PROJECT_DIR$/ch16/channel/channel.go" />
+      <package value="reboot/ch16/channel" />
       <directory value="$PROJECT_DIR$/" />
       <method v="2" />
     </configuration>
-    <configuration name="go build test-gin/数据结构&amp;算法/sparsearray" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
+    <configuration name="TestChannel in reboot/ch16/channel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
       <module name="test-gin" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/数据结构&amp;算法/sparsearray/main.go" />
-      <package value="test-gin/数据结构&amp;算法/sparsearray" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="go build test-gin/login&amp;register" type="GoApplicationRunConfiguration" factoryName="Go Application" temporary="true" nameIsGenerated="true">
-      <module name="test-gin" />
-      <working_directory value="$PROJECT_DIR$/" />
-      <kind value="PACKAGE" />
-      <filePath value="$PROJECT_DIR$/login&amp;register/main.go" />
-      <package value="test-gin/login&amp;register" />
-      <directory value="$PROJECT_DIR$/" />
-      <method v="2" />
-    </configuration>
-    <configuration name="TestFun in test-gin/ch11/customer_type" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
-      <module name="test-gin" />
-      <working_directory value="$PROJECT_DIR$/ch11/customer_type" />
+      <working_directory value="$PROJECT_DIR$/ch16/channel" />
       <framework value="gotest" />
       <kind value="PACKAGE" />
-      <package value="test-gin/ch11/customer_type" />
+      <package value="reboot/ch16/channel" />
       <directory value="$PROJECT_DIR$/" />
       <filePath value="$PROJECT_DIR$/" />
-      <pattern value="^TestFun$" />
+      <pattern value="^TestChannel$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestChannel2 in reboot/ch16/channel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="test-gin" />
+      <working_directory value="$PROJECT_DIR$/ch16/channel" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="reboot/ch16/channel" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestChannel2$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestChannel3 in reboot/ch16/channel" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="test-gin" />
+      <working_directory value="$PROJECT_DIR$/ch16/channel" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="reboot/ch16/channel" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestChannel3$" />
+      <method v="2" />
+    </configuration>
+    <configuration name="TestGroutin in reboot/ch16/groutine" type="GoTestRunConfiguration" factoryName="Go Test" temporary="true" nameIsGenerated="true">
+      <module name="test-gin" />
+      <working_directory value="$PROJECT_DIR$/ch16/groutine" />
+      <framework value="gotest" />
+      <kind value="PACKAGE" />
+      <package value="reboot/ch16/groutine" />
+      <directory value="$PROJECT_DIR$/" />
+      <filePath value="$PROJECT_DIR$/" />
+      <pattern value="^TestGroutin$" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Go Build.go build test-gin/login&amp;register" />
-        <item itemvalue="Go Build.go build test-gin/数据结构&amp;算法/recursion" />
-        <item itemvalue="Go Test.TestFun in test-gin/ch11/customer_type" />
-        <item itemvalue="Go Build.go build test-gin/数据结构&amp;算法/sparsearray" />
-        <item itemvalue="Go Build.go build set.go" />
+        <item itemvalue="Go Build.go build reboot/ch16/channel" />
+        <item itemvalue="Go Test.TestChannel3 in reboot/ch16/channel" />
+        <item itemvalue="Go Test.TestChannel2 in reboot/ch16/channel" />
+        <item itemvalue="Go Test.TestChannel in reboot/ch16/channel" />
+        <item itemvalue="Go Test.TestGroutin in reboot/ch16/groutine" />
       </list>
     </recent_temporary>
   </component>
@@ -151,18 +158,26 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="552" y="184" key="#Plugins/0.0.1920.1050@0.0.1920.1050" timestamp="1638958959720" />
-    <state x="668" y="168" key="#go_build_test-gin/login&amp;register" timestamp="1632450629426">
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom" timestamp="1646884832443">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="668" y="168" key="#go_build_test-gin/login&amp;register/0.0.1920.1050@0.0.1920.1050" timestamp="1632450629426" />
+    <state width="1877" height="285" key="GridCell.Tab.0.bottom/0.0.1920.1050@0.0.1920.1050" timestamp="1646884832443" />
+    <state width="1877" height="285" key="GridCell.Tab.0.center" timestamp="1646884832442">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.center/0.0.1920.1050@0.0.1920.1050" timestamp="1646884832442" />
+    <state width="1877" height="285" key="GridCell.Tab.0.left" timestamp="1646884832442">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.left/0.0.1920.1050@0.0.1920.1050" timestamp="1646884832442" />
+    <state width="1877" height="285" key="GridCell.Tab.0.right" timestamp="1646884832442">
+      <screen x="0" y="0" width="1920" height="1050" />
+    </state>
+    <state width="1877" height="285" key="GridCell.Tab.0.right/0.0.1920.1050@0.0.1920.1050" timestamp="1646884832442" />
     <state x="461" y="167" key="SettingsEditor" timestamp="1638958992069">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="461" y="167" key="SettingsEditor/0.0.1920.1050@0.0.1920.1050" timestamp="1638958992069" />
-    <state x="944" y="202" width="649" height="534" key="find.popup" timestamp="1632464905310">
-      <screen x="0" y="0" width="1920" height="1050" />
-    </state>
-    <state x="944" y="202" width="649" height="534" key="find.popup/0.0.1920.1050@0.0.1920.1050" timestamp="1632464905310" />
     <state x="623" y="227" width="672" height="678" key="search.everywhere.popup" timestamp="1638958964592">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
